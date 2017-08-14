@@ -90,7 +90,7 @@ public class Testcases extends Keywords{
 	public static void explore() throws IOException {
 		Explore.explore();
 	}
-	/*@Test(priority=4)
+	@Test(priority=4)
 	public static void amlTransformEncode() throws IOException {
 		AMLTransformEncode.amlTransformEncode();
 	}
@@ -214,7 +214,7 @@ public class Testcases extends Keywords{
 	public static void mailReport() throws IOException {
 		MailReport.mailReport();
 	}
-*/	
+
 	@AfterClass
 	public static void teardown() throws Exception {
 		Config.tearDown();
