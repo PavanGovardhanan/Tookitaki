@@ -1,0 +1,162 @@
+package scripts;
+import java.io.IOException;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import commonMethods.Config;
+import commonMethods.Keywords;
+import commonMethods.Utils;
+public class RBLPipeline extends Keywords {
+	/*
+	 * Name : Pavan 
+	 * Created Date: 01/Aug/2017 
+	 * Modified Date:01/Aug/2017
+	 * Description:
+	 * 
+	 */
+	public static void rblPipeline() throws IOException {
+		String automationName = Utils.getDataFromTestData("rblPipeline", "Automation Name");
+		String file1 = Utils.getDataFromTestData("rblPipeline", "OutputFile1");
+		String file2 = Utils.getDataFromTestData("rblPipeline", "OutputFile2");
+		String file3 = Utils.getDataFromTestData("rblPipeline", "OutputFile3");
+		String file4 = Utils.getDataFromTestData("rblPipeline", "OutputFile4");
+		String file5 = Utils.getDataFromTestData("rblPipeline", "OutputFile5");
+		String file6 = Utils.getDataFromTestData("rblPipeline", "OutputFile6");
+		String file7 = Utils.getDataFromTestData("rblPipeline", "OutputFile7");
+		String file8 = Utils.getDataFromTestData("rblPipeline", "OutputFile8");
+		String file9 = Utils.getDataFromTestData("rblPipeline", "OutputFile9");
+		String file10 = Utils.getDataFromTestData("rblPipeline", "OutputFile10");
+		waitForElement(dashboard);
+		click(dashboard);
+		waitForElement(pipeline);
+		click(pipeline);
+		waitForElement(viewPipeline);
+		click(createpipeline);
+		defaultWait();
+		waitForElement(addPipelineName);
+		sendKeys(addPipelineName, automationName);
+		waitForElement(addProcess);
+		click(addProcess);
+		waitForElement(addTransformation);
+		click(addTransformation);
+		defaultWait();
+		waitForElement(chooseTransformation);
+		click(chooseTransformation);
+		waitForElement(selectTransformation);
+		sendKeys(selectTransformation, file1);
+		defaultWait();
+		tab();
+		click(add);
+		defaultWait();
+		waitForElement(addProcess);
+		click(addProcess);
+		waitForElement(addTransformation);
+		click(addTransformation);
+		defaultWait();
+		waitForElement(chooseTransformation);
+		click(chooseTransformation);
+		waitForElement(selectTransformation);
+		sendKeys(selectTransformation, file2);
+		scrollBottom();
+		click(add);
+		defaultWait();
+		waitForElement(addProcess);
+		click(addProcess);
+		waitForElement(addTransformation);
+		click(addTransformation);
+		defaultWait();
+		waitForElement(chooseTransformation);
+		click(chooseTransformation);
+		waitForElement(selectTransformation);
+		sendKeys(selectTransformation, file3);
+		tab();
+		click(add);
+		defaultWait();
+		click(addProcess);
+		waitForElement(addTransformation);
+		click(addTransformation);
+		defaultWait();
+		waitForElement(chooseTransformation);
+		click(chooseTransformation);
+		waitForElement(selectTransformation);
+		sendKeys(selectTransformation, file4);
+		tab();
+		click(add);
+		defaultWait();
+		click(addProcess);
+		waitForElement(addTransformation);
+		click(addTransformation);
+		defaultWait();
+		waitForElement(chooseTransformation);
+		click(chooseTransformation);
+		waitForElement(selectTransformation);
+		sendKeys(selectTransformation, file5);
+		tab();
+		click(add);
+		defaultWait();
+		click(addProcess);
+		waitForElement(addTransformation);
+		click(addTransformation);
+		defaultWait();
+		waitForElement(chooseTransformation);
+		click(chooseTransformation);
+		waitForElement(selectTransformation);
+		sendKeys(selectTransformation, file6);
+		tab();
+		click(add);
+		defaultWait();
+		click(addProcess);
+		waitForElement(addTransformation);
+		click(addTransformation);
+		defaultWait();
+		waitForElement(chooseTransformation);
+		click(chooseTransformation);
+		waitForElement(selectTransformation);
+		sendKeys(selectTransformation, file7);
+		tab();
+		click(add);
+		defaultWait();
+		click(addProcess);
+		waitForElement(addTransformation);
+		click(addTransformation);
+		defaultWait();
+		waitForElement(chooseTransformation);
+		click(chooseTransformation);
+		waitForElement(selectTransformation);
+		sendKeys(selectTransformation, file8);
+		tab();
+		click(add);
+		defaultWait();
+		click(addProcess);
+		waitForElement(addTransformation);
+		click(addTransformation);
+		defaultWait();
+		waitForElement(chooseTransformation);
+		click(chooseTransformation);
+		waitForElement(selectTransformation);
+		sendKeys(selectTransformation, file9);
+		tab();
+		click(add);
+		click(addProcess);
+		waitForElement(addModel);
+		click(addModel);
+		defaultWait();
+		waitForElement(chooseModel);
+		click(chooseModel);
+		waitForElement(selectTransformation);
+		sendKeys(selectTransformation, file10);
+		tab();
+		waitForElement(chooseAnalyzer);
+		click(chooseAnalyzer);
+		tab();
+		click(add);
+		defaultWait();
+		waitForElement(runAutomation);
+		click(runAutomation);
+		waitForElement(processRunAutomation);
+		click(processRunAutomation);
+		
+		}
+	}
+
+
