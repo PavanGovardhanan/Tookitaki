@@ -1194,7 +1194,7 @@ public class Keywords implements OR {
 	 {
 	  try 
 	  {
-	   String image_dest= Testcases.screenshots_save_path+"/screenshots/"+screenshotName.concat(".png");
+	   String image_dest= "/screenshots/"+screenshotName.concat(".png");
 	   TakesScreenshot ts=(TakesScreenshot)driver;
 	   File source=ts.getScreenshotAs(OutputType.FILE);
 	   String dest = image_dest;
