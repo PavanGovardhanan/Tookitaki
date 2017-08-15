@@ -15,6 +15,7 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import commonMethods.Config;
+import commonMethods.Testcases;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Action;
@@ -296,6 +297,7 @@ public class Keywords implements OR {
 		try {
 			Actions builder = new Actions(driver);
 			builder.moveToElement(webElement).build().perform();
+			Reporter.log("Mouse over - " +values[0], true);
 			//ATUReports.add("Mouse over - " +values[0], false);
 		} catch (Exception e) {
 			//ATUReports.add("Mouse over - " +values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
@@ -740,7 +742,7 @@ public class Keywords implements OR {
 				//	new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			e.printStackTrace();
 			System.out.println("Waited for Element and the Element does not appear in the given time period so scripts got failure");
-			Assert.fail();
+		
 		}
 		
 	}
@@ -1188,14 +1190,24 @@ public class Keywords implements OR {
 		driver.navigate().to(inputData);
 	}
 
-	public static void screenShot(WebDriver driver, String inputData) {
-		File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		try {
-			FileUtils.copyFile(screenshot, new File(inputData));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+	public static String captureScreenshot(WebDriver driver, String screenshotName)
+	 {
+	  try 
+	  {
+	   String image_dest= Testcases.screenshots_save_path+"/screenshots/"+screenshotName.concat(".png");
+	   TakesScreenshot ts=(TakesScreenshot)driver;
+	   File source=ts.getScreenshotAs(OutputType.FILE);
+	   String dest = image_dest;
+	   File destination = new File(dest);
+	   FileUtils.copyFile(source, destination);
+	   return dest;
+	  }
+	  catch (Exception e) 
+	  {
+	   System.out.println("Exception while taking Screenshot"+e.getMessage());
+	   return e.getMessage();
+	  }
+	 }
 
 	public static void alertGenerate(WebDriver driver, String inputData) {
 		JavascriptExecutor javascript = (JavascriptExecutor) driver;
@@ -1244,7 +1256,8 @@ public class Keywords implements OR {
 		}
 
 	}
-
+	
+		
 	public static void closeTab(WebDriver driver) {
 		driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "w");
 		// tabs.remove(tabs.get(0));
@@ -1315,8 +1328,7 @@ public class Keywords implements OR {
 		try {
 			WebElement webElement = Config.driver.findElement(By.xpath(values[1]));
 			highLightElement(path);
-			String text = webElement.getText().trim();
-			System.out.println(text);
+			String text = (String)((JavascriptExecutor)Config.driver).executeScript("arguments[0].innerHTML;", webElement);
 			Reporter.log(text, true);
 			//ATUReports.add(values[0], "", text, true);
 			return text;

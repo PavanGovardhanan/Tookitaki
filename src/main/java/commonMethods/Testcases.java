@@ -1,13 +1,22 @@
 package commonMethods;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -47,7 +56,7 @@ import scripts.Upload;
 import scripts.ZipUtils;
 
 //@Listeners({ ATUReportsListener.class, ConfigurationListener.class, MethodListener.class })
-
+@Listeners(commonMethods.ListenerTest.class)
 public class Testcases extends Keywords{
 	/*public static String propertyFilePath=Utils.getDataFromTestConfig("ATUPropertiesPath").trim();
 	{
@@ -63,7 +72,7 @@ public class Testcases extends Keywords{
 	public static String screenShot_value;
 	public static String testNGPath;
 	public static String reportsPath;
-	public static String testNGXML_Path;
+	public static String screenshots_save_path;
 
 	@BeforeClass
 	public static void getDataFromConfig() throws MalformedURLException {
@@ -75,18 +84,18 @@ public class Testcases extends Keywords{
 		version_Name = Utils.getDataFromTestConfig("Version_Name");
 		environment = Utils.getDataFromTestConfig("Environment");
 		reportsPath = Utils.getDataFromTestConfig("Reports Path");
-		testNGXML_Path = Utils.getDataFromTestConfig("TestNGXML Path");
+		screenshots_save_path=Utils.getDataFromTestConfig("Screenshots path");
 		Config.getDriver();
 	}
 	@Test(priority=1)
 	public static void login() throws IOException {
 		Login.login();
 	}
-	@Test(priority=2)
+	//@Test(priority=2)
 	public static void cluster() throws Exception {
 		Cluster.cluster();
 	}
-	@Test(priority=3)
+	/*@Test(priority=3)
 	public static void explore() throws IOException {
 		Explore.explore();
 	}
@@ -189,7 +198,7 @@ public class Testcases extends Keywords{
 	@Test(priority=28)
 	public static void rblTransformSplit() throws IOException {
 		RBLTransformSplit.rblTransformSplit();
-	}
+	}*/
 	@Test(priority=29)
 	public static void rblModel() throws IOException {
 		RBLModel.rblModel();
@@ -214,7 +223,7 @@ public class Testcases extends Keywords{
 	public static void mailReport() throws IOException {
 		MailReport.mailReport();
 	}*/
-
+	
 	@AfterClass
 	public static void teardown() throws Exception {
 		Config.tearDown();

@@ -2,6 +2,7 @@ package scripts;
 
 import java.io.IOException;
 
+import org.openqa.selenium.By;
 import org.testng.Assert;
 
 
@@ -20,7 +21,7 @@ public class RBLModel extends Keywords{
 	 */
 	public static void rblModel() throws IOException {
 		waitForElement(dashboard);
-		click(dashboard);
+		/*click(dashboard);
 		waitForElement(model);
 		click(model);
 		waitForElement(addModelUnit);
@@ -98,8 +99,8 @@ public class RBLModel extends Keywords{
 		click(model);
 		waitForElement(viewModel);
 		click(viewModel);
-		waitUntilInvisibilityElement(viewRBLModel1);
 		try {
+		waitUntilInvisibilityElement(viewRBLModel1);
 		mouseOver(Config.driver, viewRBLModel1);
 		getText1(viewRBLModel1);
 		Assert.fail();
@@ -122,7 +123,21 @@ public class RBLModel extends Keywords{
 		waitForElement(computemetrics);
 		click(computemetrics);
 		waitForElement(saveScenario);
-		click(saveScenario);		
+		click(saveScenario);*/
+		
+		click(dashboard);
+		waitForElement(model);
+		click(model);
+		waitForElement(viewModel);
+		click(viewModel);
+		wait("5");
+		mouseOver(Config.driver, viewRBLModel1);
+		String name=getText(viewRBLModel1);
+		System.out.println(name);
+		getAttribute(viewRBLModel2, "innerHTML");
+		getText1(viewRBLModel2);
+		//Assert.fail();
+		
 	}
 
 }

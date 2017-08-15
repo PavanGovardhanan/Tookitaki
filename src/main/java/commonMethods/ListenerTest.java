@@ -3,6 +3,7 @@ package commonMethods;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import org.testng.Reporter;
 
 public class ListenerTest implements ITestListener{
 
@@ -22,8 +23,15 @@ public class ListenerTest implements ITestListener{
  }
 
  public void onTestFailure(ITestResult arg0) {
-  System.out.println(arg0.getName()+" : "+arg0.getThrowable());
-  
+	
+	 if((arg0.getStatus()== ITestResult.FAILURE))
+	  {
+	   String imagePath=Keywords.captureScreenshot(Config.driver, arg0.getName());
+	   String image="./screenshots/"+arg0.getName()+".png";
+	   Reporter.log("<img src='"+ image + "' height='400' width='600'/> </a>");
+	   System.out.println(image);
+	  }
+
  }
 
  public void onTestSkipped(ITestResult arg0) {
