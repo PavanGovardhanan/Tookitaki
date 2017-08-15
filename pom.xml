@@ -37,11 +37,12 @@
 		 </plugins>
 	</build>
 	<dependencies>
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<version>6.9.10</version>
-		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+  <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>6.11</version>
+  </dependency>
 		
 		<dependency>
 			<groupId>javax.servlet</groupId>
