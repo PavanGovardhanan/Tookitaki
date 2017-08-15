@@ -128,6 +128,7 @@ public class RBLModel extends Keywords{
 		click(viewModel);
 		wait("5");
 		mouseOver(Config.driver, viewRBLModel1);
+		click(viewRBLModel2);
 		getText1(viewRBLModel2);
 	}
 
