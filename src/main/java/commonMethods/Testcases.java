@@ -82,7 +82,7 @@ public class Testcases extends Keywords{
 	public static void login() throws IOException {
 		Login.login();
 	}
-	//@Test(priority=2)
+	@Test(priority=2)
 	public static void cluster() throws Exception {
 		Cluster.cluster();
 	}
@@ -194,7 +194,7 @@ public class Testcases extends Keywords{
 	public static void rblModel() throws IOException {
 		RBLModel.rblModel();
 	}
-	@Test(priority=30)
+	/*@Test(priority=30)
 	public static void amlPipeline() throws IOException {
 		AMLPipeline.amlPipeline();
 	}
@@ -213,7 +213,7 @@ public class Testcases extends Keywords{
 	//@Test(priority=34)
 	public static void mailReport() throws IOException {
 		MailReport.mailReport();
-	}
+	}*/
 
 	@AfterClass
 	public static void teardown() throws Exception {
