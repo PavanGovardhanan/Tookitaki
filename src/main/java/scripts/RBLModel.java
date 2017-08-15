@@ -24,7 +24,7 @@ public class RBLModel extends Keywords{
 		click(dashboard);
 		waitForElement(model);
 		click(model);
-		waitForElement(addModelUnit);
+		/*waitForElement(addModelUnit);
 		click(addModelUnit);
 		String dataLocation = Utils.getDataFromTestData("modelUnit", "Training Data Location");
 		String desName = Utils.getDataFromTestData("modelUnit", "Description");
@@ -123,8 +123,12 @@ public class RBLModel extends Keywords{
 		waitForElement(computemetrics);
 		click(computemetrics);
 		waitForElement(saveScenario);
-		click(saveScenario);
-		
+		click(saveScenario);*/
+		waitForElement(viewModel);
+		click(viewModel);
+		wait("5");
+		mouseOver(Config.driver, viewRBLModel1);
+		getText1(viewRBLModel2);
 	}
 
 }
