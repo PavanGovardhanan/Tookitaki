@@ -185,6 +185,7 @@ public class Keywords implements OR {
 			//ATUReports.add("Click - " + values[0], LogAs.FAILED,
 					//new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			e.printStackTrace();
+			Assert.fail();
 			
 		}
 	}
