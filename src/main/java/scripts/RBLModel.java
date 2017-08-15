@@ -21,7 +21,7 @@ public class RBLModel extends Keywords{
 	 */
 	public static void rblModel() throws IOException {
 		waitForElement(dashboard);
-		/*click(dashboard);
+		click(dashboard);
 		waitForElement(model);
 		click(model);
 		waitForElement(addModelUnit);
@@ -123,20 +123,7 @@ public class RBLModel extends Keywords{
 		waitForElement(computemetrics);
 		click(computemetrics);
 		waitForElement(saveScenario);
-		click(saveScenario);*/
-		
-		click(dashboard);
-		waitForElement(model);
-		click(model);
-		waitForElement(viewModel);
-		click(viewModel);
-		wait("5");
-		mouseOver(Config.driver, viewRBLModel1);
-		String name=getText(viewRBLModel1);
-		System.out.println(name);
-		getAttribute(viewRBLModel2, "innerHTML");
-		getText1(viewRBLModel2);
-		//Assert.fail();
+		click(saveScenario);
 		
 	}
 
