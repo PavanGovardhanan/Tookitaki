@@ -3,8 +3,11 @@ package scripts;
 import java.io.IOException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
-
+import org.testng.Reporter;
 
 import commonMethods.Config;
 import commonMethods.Keywords;
@@ -24,7 +27,7 @@ public class RBLModel extends Keywords{
 		click(dashboard);
 		waitForElement(model);
 		click(model);
-		/*waitForElement(addModelUnit);
+		waitForElement(addModelUnit);
 		click(addModelUnit);
 		String dataLocation = Utils.getDataFromTestData("modelUnit", "Training Data Location");
 		String desName = Utils.getDataFromTestData("modelUnit", "Description");
@@ -102,7 +105,7 @@ public class RBLModel extends Keywords{
 		try {
 		waitUntilInvisibilityElement(viewRBLModel1);
 		mouseOver(Config.driver, viewRBLModel1);
-		getText1(viewRBLModel1);
+		getAttribute(viewRBLModel1, "uib-tooltip");
 		Assert.fail();
 		}catch(Exception e){
 		click(viewRBLModel);
@@ -123,13 +126,10 @@ public class RBLModel extends Keywords{
 		waitForElement(computemetrics);
 		click(computemetrics);
 		waitForElement(saveScenario);
-		click(saveScenario);*/
-		waitForElement(viewModel);
-		click(viewModel);
-		wait("5");
-		mouseOver(Config.driver, viewRBLModel1);
-		click(viewRBLModel2);
-		getText1(viewRBLModel2);
+		click(saveScenario);
+		
+		
+		
 	}
 
 }
