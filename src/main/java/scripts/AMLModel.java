@@ -26,6 +26,7 @@ public class AMLModel extends Keywords {
 		String unitName = Utils.getDataFromTestData("modelUnit", "Decision Unit Name1");
 		String desName = Utils.getDataFromTestData("modelUnit", "Description1");
 		String threshold = Utils.getDataFromTestData("modelUnit", "Category Threshold");
+		defaultWait();
 		waitForElement(trainingDataLocation);
 		sendKeys(trainingDataLocation, dataLocation);
 		defaultWait();
