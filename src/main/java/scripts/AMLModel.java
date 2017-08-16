@@ -30,6 +30,7 @@ public class AMLModel extends Keywords {
 		sendKeys(trainingDataLocation, dataLocation);
 		defaultWait();
 		tab();
+		defaultWait();
 		waitForElement(decisionUnitName);
 		sendKeys(decisionUnitName, unitName);
 		waitForElement(description);
