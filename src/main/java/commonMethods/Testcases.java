@@ -200,7 +200,7 @@ public class Testcases extends Keywords{
 	public static void rblTransformSplit() throws IOException {
 		RBLTransformSplit.rblTransformSplit();
 	}
-	//@Test(priority=29)
+	@Test(priority=29)
 	public static void rblModel() throws IOException {
 		RBLModel.rblModel();
 	}
