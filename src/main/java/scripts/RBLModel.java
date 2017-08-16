@@ -33,10 +33,12 @@ public class RBLModel extends Keywords{
 		String desName = Utils.getDataFromTestData("modelUnit", "Description");
 		String unitName = Utils.getDataFromTestData("modelUnit", "Decision Unit Name");
 		String dataLocationFile = Utils.getDataFromTestData("modelUnit", "Data Location File");
+		defaultWait();
 		waitForElement(trainingDataLocation);
 		sendKeys(trainingDataLocation, dataLocation);
 		defaultWait();
 		tab();
+		defaultWait();
 		waitForElement(decisionUnitName);
 		sendKeys(decisionUnitName, desName);
 		waitForElement(description);
