@@ -105,6 +105,7 @@ public class RBLModel extends Keywords{
 		try {
 		waitUntilInvisibilityElement(viewRBLModel1);
 		mouseOver(Config.driver, viewRBLModel1);
+		defaultWait();
 		getAttribute(viewRBLModel1, "uib-tooltip");
 		Assert.fail();
 		}catch(Exception e){
