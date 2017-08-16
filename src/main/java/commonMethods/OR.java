@@ -94,7 +94,7 @@ public interface OR {
 	public static String viewAMLModel = "View AML Model>//td/a";
 	public static String viewAMLModel1 = "View AML Model>//td[text()='COMPLETED ']";
 	public static String viewRBLModel = "View RBL Model>//td/a";
-	public static String viewRBLModel1 = "View RBL Model>//td[4]/i";
+	public static String viewRBLModel1 = "View RBL Model>//td//i[@tooltip-trigger='mouseenter']";
 	public static String viewRBLModel2 = "View RBL Model>//td[text()='Failed']//following::div[contains(text(),'Failed to run the model building pipeline')]";
 	public static String evaluationMetrics = "Evaluation Metrics>//tr[@ng-repeat='job in vm.jobs']//following::td[text()='RUNNING']";
 	public static String featureRelevance = "Feature Relevance>//li[2]/a/tab-heading";

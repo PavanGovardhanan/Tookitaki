@@ -24,13 +24,7 @@ public class ListenerTest implements ITestListener{
 
  public void onTestFailure(ITestResult arg0) {
 	
-	 if((arg0.getStatus()== ITestResult.FAILURE))
-	  {
-	   String imagePath=Keywords.captureScreenshot(Config.driver, arg0.getName());
-	   String image= "/job/Tookitaki/13/testngreports/commonMethods/Testcases/rblModel/screenshots/"+arg0.getName()+".png";
-	   Reporter.log("<img src='"+ image + "' height='400' width='600'/> </a>");
-	   System.out.println(image);
-	  }
+	 System.out.println(arg0.getName()+" : "+arg0.getThrowable());
 
  }
 

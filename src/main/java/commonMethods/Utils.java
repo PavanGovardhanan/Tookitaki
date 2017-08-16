@@ -1,7 +1,11 @@
 package commonMethods;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.util.Iterator;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -9,9 +13,57 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class Utils {
 	
+	public static String getURLFromJenkins(String data){
+			String element = null;
+	      try {	
+	         File inputFile = new File("C:\\Program Files (x86)\\Jenkins\\jobs\\Tookitaki\\config.xml");
+	         DocumentBuilderFactory dbFactory 
+	            = DocumentBuilderFactory.newInstance();
+	         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+	         Document doc = dBuilder.parse(inputFile);
+	         doc.getDocumentElement().normalize();
+	         System.out.println("Root element :" 
+	            + doc.getDocumentElement().getNodeName());
+	         NodeList nList = doc.getElementsByTagName("prebuilders");
+	         System.out.println("----------------------------");
+	         for (int temp = 0; temp < nList.getLength(); temp++) {
+	            Node nNode = nList.item(temp);
+	            System.out.println("\nCurrent Element :" 
+	               + nNode.getNodeName());
+	            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+	               Element eElement = (Element) nNode;
+	               System.out.println("hudson.plugins.seleniumhq.SeleniumhqBuilder : " 
+	                  + eElement.getAttribute("plugin"));
+	               System.out.println("browser: " 
+	                  + eElement
+	                  .getElementsByTagName(data)
+	                  .item(0)
+	                  .getTextContent());
+	               element = eElement
+	 	                  .getElementsByTagName(data)
+		                  .item(0)
+		                  .getTextContent();
+	              /* System.out.println("startURL : " 
+	               + eElement
+	                  .getElementsByTagName("startURL")
+	                  .item(0)
+	                  .getTextContent());*/
+	            }
+	         }
+	         return element;
+	      } 
+	      catch (Exception e) {
+	         e.printStackTrace();
+	         return null;
+	      }
+	   }
 	public static String getDataFromTestData(String autoTestCaseNameVal, String label) {
 		String requiredCellVal = "";
 		try {

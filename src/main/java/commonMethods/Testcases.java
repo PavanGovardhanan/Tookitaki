@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import org.apache.commons.io.FileUtils;
+import org.jdom2.JDOMException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -77,7 +78,7 @@ public class Testcases extends Keywords{
 	@BeforeClass
 	public static void getDataFromConfig() throws MalformedURLException {
 		System.out.println("Enters to @before class");
-		appURL = Utils.getDataFromTestConfig("URL");
+		appURL = Utils.getURLFromJenkins("startURL");
 		UserloginUserName = Utils.getDataFromTestConfig("LoginUsername").trim();
 		UserloginPassword = Utils.getDataFromTestConfig("LoginPassword").trim();
 		project_Name = Utils.getDataFromTestConfig("Project_Name");
@@ -91,7 +92,7 @@ public class Testcases extends Keywords{
 	public static void login() throws IOException {
 		Login.login();
 	}
-	/*@Test(priority=2)
+	@Test(priority=2)
 	public static void cluster() throws Exception {
 		Cluster.cluster();
 	}
@@ -198,12 +199,12 @@ public class Testcases extends Keywords{
 	@Test(priority=28)
 	public static void rblTransformSplit() throws IOException {
 		RBLTransformSplit.rblTransformSplit();
-	}*/
-	@Test(priority=29)
+	}
+	//@Test(priority=29)
 	public static void rblModel() throws IOException {
 		RBLModel.rblModel();
 	}
-/*	@Test(priority=30)
+	@Test(priority=30)
 	public static void amlPipeline() throws IOException {
 		AMLPipeline.amlPipeline();
 	}
@@ -222,7 +223,7 @@ public class Testcases extends Keywords{
 	//@Test(priority=34)
 	public static void mailReport() throws IOException {
 		MailReport.mailReport();
-	}*/
+	}
 	
 	@AfterClass
 	public static void teardown() throws Exception {

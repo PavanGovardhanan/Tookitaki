@@ -1329,7 +1329,7 @@ public class Keywords implements OR {
 		try {
 			WebElement webElement = Config.driver.findElement(By.xpath(values[1]));
 			highLightElement(path);
-			String text = (String)((JavascriptExecutor)Config.driver).executeScript("arguments[0].innerHTML;", webElement);
+			String text = (String)((JavascriptExecutor)Config.driver).executeScript("arguments[2].innerHTML;", webElement);
 			Reporter.log(text, true);
 			//ATUReports.add(values[0], "", text, true);
 			return text;
@@ -1341,9 +1341,15 @@ public class Keywords implements OR {
 	}
 
 	public static String getAttribute(String xpath, String locatorName) {
+		try {
 		String[] values = splitXpath(xpath);
 		WebElement webElement = Config.driver.findElement(By.xpath(values[1]));
+		Reporter.log(webElement.getAttribute(locatorName)+"attributes",true);
 		return webElement.getAttribute(locatorName);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+	}
 	}
 
 	public static boolean isDisplayed(String xpath) {
