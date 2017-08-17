@@ -26,6 +26,7 @@ public class AMLModel extends Keywords {
 		String unitName = Utils.getDataFromTestData("modelUnit", "Decision Unit Name1");
 		String desName = Utils.getDataFromTestData("modelUnit", "Description1");
 		String threshold = Utils.getDataFromTestData("modelUnit", "Category Threshold");
+		String moduleName=unitName.concat(getCurrentDate());
 		defaultWait();
 		waitForElement(trainingDataLocation);
 		sendKeys(trainingDataLocation, dataLocation);
@@ -33,9 +34,9 @@ public class AMLModel extends Keywords {
 		tab();
 		defaultWait();
 		waitForElement(decisionUnitName);
-		sendKeys(decisionUnitName, unitName);
+		sendKeys(decisionUnitName, moduleName);
 		waitForElement(description);
-		sendKeys(description, desName);
+		sendKeys(description, moduleName);
 		click(infoNextStep);
 		waitForElement(dependentVariable);
 		click(dependentVariable);

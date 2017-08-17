@@ -29,36 +29,16 @@ public class Utils {
 	            = DocumentBuilderFactory.newInstance();
 	         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 	         Document doc = dBuilder.parse(inputFile);
-	         doc.getDocumentElement().normalize();
-	         System.out.println("Root element :" 
-	            + doc.getDocumentElement().getNodeName());
+	         doc.getDocumentElement().normalize();	        
 	         NodeList nList = doc.getElementsByTagName("prebuilders");
-	         System.out.println("----------------------------");
 	         for (int temp = 0; temp < nList.getLength(); temp++) {
 	            Node nNode = nList.item(temp);
-	            System.out.println("\nCurrent Element :" 
-	               + nNode.getNodeName());
 	            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 	               Element eElement = (Element) nNode;
-	               System.out.println("hudson.plugins.seleniumhq.SeleniumhqBuilder : " 
-	                  + eElement.getAttribute("plugin"));
-	               System.out.println("browser: " 
-	                  + eElement
-	                  .getElementsByTagName(data)
-	                  .item(0)
-	                  .getTextContent());
 	               element = eElement
 	 	                  .getElementsByTagName(data)
 		                  .item(0)
 		                  .getTextContent();
-	               String Values[]=element.split(",");
-	               System.out.println(Values[0]);
-	               System.out.println(Values[1]);
-	              /* System.out.println("startURL : " 
-	               + eElement
-	                  .getElementsByTagName("startURL")
-	                  .item(0)
-	                  .getTextContent());*/
 	            }
 	         }
 	         return element;
@@ -79,37 +59,17 @@ public class Utils {
          DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
          Document doc = dBuilder.parse(inputFile);
          doc.getDocumentElement().normalize();
-         System.out.println("Root element :" 
-            + doc.getDocumentElement().getNodeName());
          NodeList nList = doc.getElementsByTagName("prebuilders");
-         System.out.println("----------------------------");
          for (int temp = 0; temp < nList.getLength(); temp++) {
             Node nNode = nList.item(temp);
-            System.out.println("\nCurrent Element :" 
-               + nNode.getNodeName());
             if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                Element eElement = (Element) nNode;
-               System.out.println("hudson.plugins.seleniumhq.SeleniumhqBuilder : " 
-                  + eElement.getAttribute("plugin"));
-               System.out.println("browser: " 
-                  + eElement
-                  .getElementsByTagName(data)
-                  .item(0)
-                  .getTextContent());
                element = eElement
  	                  .getElementsByTagName(data)
 	                  .item(0)
 	                  .getTextContent();
                String Values[]=element.split(",");
                userName = (Values[0]);
-               String password = (Values[1]);
-               System.out.println(Values[0]);
-               System.out.println(Values[1]);
-              /* System.out.println("startURL : " 
-               + eElement
-                  .getElementsByTagName("startURL")
-                  .item(0)
-                  .getTextContent());*/
             }
          }
          return userName;
@@ -130,36 +90,17 @@ public class Utils {
          DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
          Document doc = dBuilder.parse(inputFile);
          doc.getDocumentElement().normalize();
-         System.out.println("Root element :" 
-            + doc.getDocumentElement().getNodeName());
          NodeList nList = doc.getElementsByTagName("prebuilders");
-         System.out.println("----------------------------");
          for (int temp = 0; temp < nList.getLength(); temp++) {
             Node nNode = nList.item(temp);
-            System.out.println("\nCurrent Element :" 
-               + nNode.getNodeName());
             if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                Element eElement = (Element) nNode;
-               System.out.println("hudson.plugins.seleniumhq.SeleniumhqBuilder : " 
-                  + eElement.getAttribute("plugin"));
-               System.out.println("browser: " 
-                  + eElement
-                  .getElementsByTagName(data)
-                  .item(0)
-                  .getTextContent());
                element = eElement
  	                  .getElementsByTagName(data)
 	                  .item(0)
 	                  .getTextContent();
                String Values[]=element.split(",");
                password = (Values[1]);
-               /*System.out.println(Values[0]);
-               System.out.println(Values[1]);*/
-              /* System.out.println("startURL : " 
-               + eElement
-                  .getElementsByTagName("startURL")
-                  .item(0)
-                  .getTextContent());*/
             }
          }
          return password;
@@ -172,24 +113,14 @@ public class Utils {
 	
 	 public static String readUserNameFromConsole(){  
 		   Scanner sc=new Scanner(System.in);  
-		   System.out.println("Enter Username:");  
 		   String userName=sc.next();  
 		   return userName;
-		   /*System.out.println("Enter Password");  
-		   String password=sc.next();  
-		   System.out.println("Username:"+userName+" Password:"+password);  
-		   sc.close();*/
-		   
 		 } 
 	 public static String readPasswordFromConsole(){  
 		   Scanner sc=new Scanner(System.in);  
-		   System.out.println("Enter Password");  
 		   String password=sc.next();  
 		   return password;
 		 } 
-	
-	
-	
 	
 	public static String getDataFromTestData(String autoTestCaseNameVal, String label) {
 		String requiredCellVal = "";

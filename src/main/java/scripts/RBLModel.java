@@ -33,6 +33,7 @@ public class RBLModel extends Keywords{
 		String desName = Utils.getDataFromTestData("modelUnit", "Description");
 		String unitName = Utils.getDataFromTestData("modelUnit", "Decision Unit Name");
 		String dataLocationFile = Utils.getDataFromTestData("modelUnit", "Data Location File");
+		String moduleName=unitName.concat(getCurrentDate());
 		defaultWait();
 		waitForElement(trainingDataLocation);
 		sendKeys(trainingDataLocation, dataLocation);
@@ -40,9 +41,9 @@ public class RBLModel extends Keywords{
 		tab();
 		defaultWait();
 		waitForElement(decisionUnitName);
-		sendKeys(decisionUnitName, desName);
+		sendKeys(decisionUnitName, moduleName);
 		waitForElement(description);
-		sendKeys(description, desName);
+		sendKeys(description, moduleName);
 		click(infoNextStep);
 		waitForElement(dependentVariable);
 		click(dependentVariable);
@@ -123,7 +124,7 @@ public class RBLModel extends Keywords{
 		waitForElement(createPredection);
 		click(createPredection);
 		waitForElement(inputFile);
-		sendKeys(inputFile, unitName);
+		sendKeys(inputFile, moduleName);
 		waitForElement(addDataLocation);
 		sendKeys(addDataLocation, dataLocationFile);
 		waitForElement(computemetrics);
