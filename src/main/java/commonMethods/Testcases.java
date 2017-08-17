@@ -79,8 +79,10 @@ public class Testcases extends Keywords{
 	public static void getDataFromConfig() throws MalformedURLException {
 		System.out.println("Enters to @before class");
 		appURL = Utils.getURLFromJenkins("startURL");
-		UserloginUserName = Utils.readUserNameFromConsole();
-		UserloginPassword = Utils.readPasswordFromConsole();
+		UserloginUserName = Utils.getUsernameFromJenkins("other");
+		UserloginPassword = Utils.getPasswordFromJenkins("other");
+		/*UserloginUserName = Utils.getURLFromJenkins();
+		UserloginPassword = Utils.readPasswordFromConsole();*/
 		/*UserloginUserName = Utils.getDataFromTestConfig("LoginUsername").trim();
 		UserloginPassword = Utils.getDataFromTestConfig("LoginPassword").trim();*/
 		project_Name = Utils.getDataFromTestConfig("Project_Name");
