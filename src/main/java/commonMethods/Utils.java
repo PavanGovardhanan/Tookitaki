@@ -51,6 +51,9 @@ public class Utils {
 	 	                  .getElementsByTagName(data)
 		                  .item(0)
 		                  .getTextContent();
+	               String Values[]=element.split(",");
+	               System.out.println(Values[0]);
+	               System.out.println(Values[1]);
 	              /* System.out.println("startURL : " 
 	               + eElement
 	                  .getElementsByTagName("startURL")
@@ -65,6 +68,107 @@ public class Utils {
 	         return null;
 	      }
 	   }
+	
+	public static String getUsernameFromJenkins(String data){
+		String element = null;
+		String userName = null;
+      try {	
+         File inputFile = new File("C:\\Program Files (x86)\\Jenkins\\jobs\\Tookitaki\\config.xml");
+         DocumentBuilderFactory dbFactory 
+            = DocumentBuilderFactory.newInstance();
+         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+         Document doc = dBuilder.parse(inputFile);
+         doc.getDocumentElement().normalize();
+         System.out.println("Root element :" 
+            + doc.getDocumentElement().getNodeName());
+         NodeList nList = doc.getElementsByTagName("prebuilders");
+         System.out.println("----------------------------");
+         for (int temp = 0; temp < nList.getLength(); temp++) {
+            Node nNode = nList.item(temp);
+            System.out.println("\nCurrent Element :" 
+               + nNode.getNodeName());
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+               Element eElement = (Element) nNode;
+               System.out.println("hudson.plugins.seleniumhq.SeleniumhqBuilder : " 
+                  + eElement.getAttribute("plugin"));
+               System.out.println("browser: " 
+                  + eElement
+                  .getElementsByTagName(data)
+                  .item(0)
+                  .getTextContent());
+               element = eElement
+ 	                  .getElementsByTagName(data)
+	                  .item(0)
+	                  .getTextContent();
+               String Values[]=element.split(",");
+               userName = (Values[0]);
+               String password = (Values[1]);
+               System.out.println(Values[0]);
+               System.out.println(Values[1]);
+              /* System.out.println("startURL : " 
+               + eElement
+                  .getElementsByTagName("startURL")
+                  .item(0)
+                  .getTextContent());*/
+            }
+         }
+         return userName;
+      } 
+      catch (Exception e) {
+         e.printStackTrace();
+         return null;
+      }
+   }
+	
+	public static String getPasswordFromJenkins(String data){
+		String element = null;
+		String password = null;
+      try {	
+         File inputFile = new File("C:\\Program Files (x86)\\Jenkins\\jobs\\Tookitaki\\config.xml");
+         DocumentBuilderFactory dbFactory 
+            = DocumentBuilderFactory.newInstance();
+         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+         Document doc = dBuilder.parse(inputFile);
+         doc.getDocumentElement().normalize();
+         System.out.println("Root element :" 
+            + doc.getDocumentElement().getNodeName());
+         NodeList nList = doc.getElementsByTagName("prebuilders");
+         System.out.println("----------------------------");
+         for (int temp = 0; temp < nList.getLength(); temp++) {
+            Node nNode = nList.item(temp);
+            System.out.println("\nCurrent Element :" 
+               + nNode.getNodeName());
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+               Element eElement = (Element) nNode;
+               System.out.println("hudson.plugins.seleniumhq.SeleniumhqBuilder : " 
+                  + eElement.getAttribute("plugin"));
+               System.out.println("browser: " 
+                  + eElement
+                  .getElementsByTagName(data)
+                  .item(0)
+                  .getTextContent());
+               element = eElement
+ 	                  .getElementsByTagName(data)
+	                  .item(0)
+	                  .getTextContent();
+               String Values[]=element.split(",");
+               password = (Values[1]);
+               /*System.out.println(Values[0]);
+               System.out.println(Values[1]);*/
+              /* System.out.println("startURL : " 
+               + eElement
+                  .getElementsByTagName("startURL")
+                  .item(0)
+                  .getTextContent());*/
+            }
+         }
+         return password;
+      } 
+      catch (Exception e) {
+         e.printStackTrace();
+         return null;
+      }
+   }
 	
 	 public static String readUserNameFromConsole(){  
 		   Scanner sc=new Scanner(System.in);  
