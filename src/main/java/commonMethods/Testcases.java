@@ -79,8 +79,10 @@ public class Testcases extends Keywords{
 	public static void getDataFromConfig() throws MalformedURLException {
 		System.out.println("Enters to @before class");
 		appURL = Utils.getURLFromJenkins("startURL");
-		UserloginUserName = Utils.getDataFromTestConfig("LoginUsername").trim();
-		UserloginPassword = Utils.getDataFromTestConfig("LoginPassword").trim();
+		UserloginUserName = Utils.readUserNameFromConsole();
+		UserloginPassword = Utils.readPasswordFromConsole();
+		/*UserloginUserName = Utils.getDataFromTestConfig("LoginUsername").trim();
+		UserloginPassword = Utils.getDataFromTestConfig("LoginPassword").trim();*/
 		project_Name = Utils.getDataFromTestConfig("Project_Name");
 		version_Name = Utils.getDataFromTestConfig("Version_Name");
 		environment = Utils.getDataFromTestConfig("Environment");
@@ -92,7 +94,7 @@ public class Testcases extends Keywords{
 	public static void login() throws IOException {
 		Login.login();
 	}
-	@Test(priority=2)
+	/*@Test(priority=2)
 	public static void cluster() throws Exception {
 		Cluster.cluster();
 	}
@@ -223,7 +225,7 @@ public class Testcases extends Keywords{
 	//@Test(priority=34)
 	public static void mailReport() throws IOException {
 		MailReport.mailReport();
-	}
+	}*/
 	
 	@AfterClass
 	public static void teardown() throws Exception {
