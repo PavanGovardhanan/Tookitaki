@@ -3,6 +3,7 @@ package commonMethods;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Iterator;
+import java.util.Scanner;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -64,6 +65,28 @@ public class Utils {
 	         return null;
 	      }
 	   }
+	
+	 public static String readUserNameFromConsole(){  
+		   Scanner sc=new Scanner(System.in);  
+		   System.out.println("Enter Username:");  
+		   String userName=sc.next();  
+		   return userName;
+		   /*System.out.println("Enter Password");  
+		   String password=sc.next();  
+		   System.out.println("Username:"+userName+" Password:"+password);  
+		   sc.close();*/
+		   
+		 } 
+	 public static String readPasswordFromConsole(){  
+		   Scanner sc=new Scanner(System.in);  
+		   System.out.println("Enter Password");  
+		   String password=sc.next();  
+		   return password;
+		 } 
+	
+	
+	
+	
 	public static String getDataFromTestData(String autoTestCaseNameVal, String label) {
 		String requiredCellVal = "";
 		try {
