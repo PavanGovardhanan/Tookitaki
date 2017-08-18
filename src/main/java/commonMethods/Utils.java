@@ -174,7 +174,7 @@ public class Utils {
 	{
 		String requiredCellVal = "";
 		try {
-			FileInputStream fis = new FileInputStream("\\home\\ec2-user\\.jenkins\\workspace\\Tookitaki\\datadata\\TestConfiguration.xlsx");
+			FileInputStream fis = new FileInputStream("\\home\\ec2-user\\.jenkins\\workspace\\Tookitaki\\data\\TestConfiguration.xlsx");
 			XSSFWorkbook wb = new XSSFWorkbook(fis);
 			XSSFSheet ws = wb.getSheet("Sheet1");
 
