@@ -25,7 +25,7 @@ public class Utils {
 	public static String getURLFromJenkins(String data){
 			String element = null;
 	      try {	
-	         File inputFile = new File("/config.xml");
+	         File inputFile = new File("/home/ec2-user/.jenkins/jobs/Tookitaki/config.xml");
 	         DocumentBuilderFactory dbFactory 
 	            = DocumentBuilderFactory.newInstance();
 	         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -54,7 +54,7 @@ public class Utils {
 		String element = null;
 		String userName = null;
       try {	
-         File inputFile = new File("/config.xml");
+         File inputFile = new File("/home/ec2-user/.jenkins/jobs/Tookitaki/config.xml");
          DocumentBuilderFactory dbFactory 
             = DocumentBuilderFactory.newInstance();
          DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -85,7 +85,7 @@ public class Utils {
 		String element = null;
 		String password = null;
       try {	
-         File inputFile = new File("/config.xml");
+         File inputFile = new File("/home/ec2-user/.jenkins/jobs/Tookitaki/config.xml");
          DocumentBuilderFactory dbFactory 
             = DocumentBuilderFactory.newInstance();
          DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
