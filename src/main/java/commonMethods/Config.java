@@ -1,15 +1,11 @@
 package commonMethods;
-import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
 
 public class Config {
@@ -21,22 +17,11 @@ public class Config {
 		String ie = Utils.getDataFromTestConfig("IEDriverPath");
 
 		if (browserName.equals("Chrome")) {
-			/*System.setProperty("webdriver.chrome.driver", "/home/ec2-user/.jenkins/workspace/Tookitaki/driver/chromedriver");
+			System.setProperty("webdriver.chrome.driver", "/home/ec2-user/.jenkins/workspace/Tookitaki/driver/chromedriver");
 			System.out.println("Browser launched...");
 			driver = new ChromeDriver();
 			//ATUReports.setWebDriver(driver);
-			driver.manage().window().maximize();*/
-			System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
-			ChromeDriverService service = new ChromeDriverService.Builder()
-			                .usingDriverExecutable(new File("/usr/local/bin/chromedriver"))
-			                .usingAnyFreePort()
-			                .build();
-			        try {
-			            service.start();
-			        } catch (IOException e) {
-			            e.printStackTrace();
-			        }
-			        return;
+			driver.manage().window().maximize();
 			//ATUReports.indexPageDescription = Testcases.project_Name;
 		} else if (browserName.equalsIgnoreCase("Firefox")) {
 			System.setProperty("webdriver.gecko.driver", "driver\\geckodriver.exe");
