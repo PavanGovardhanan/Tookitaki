@@ -24,7 +24,7 @@ public class Utils {
 	public static String getURLFromJenkins(String data){
 			String element = null;
 	      try {	
-	         File inputFile = new File("C:\\Program Files (x86)\\Jenkins\\jobs\\Tookitaki\\config.xml");
+	         File inputFile = new File("\\home\\ec2-user\\.jenkins\\jobs\\Tookitaki\\config.xml");
 	         DocumentBuilderFactory dbFactory 
 	            = DocumentBuilderFactory.newInstance();
 	         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -53,7 +53,7 @@ public class Utils {
 		String element = null;
 		String userName = null;
       try {	
-         File inputFile = new File("C:\\Program Files (x86)\\Jenkins\\jobs\\Tookitaki\\config.xml");
+         File inputFile = new File("\\home\\ec2-user\\.jenkins\\jobs\\Tookitaki\\config.xml");
          DocumentBuilderFactory dbFactory 
             = DocumentBuilderFactory.newInstance();
          DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -84,7 +84,7 @@ public class Utils {
 		String element = null;
 		String password = null;
       try {	
-         File inputFile = new File("C:\\Program Files (x86)\\Jenkins\\jobs\\Tookitaki\\config.xml");
+         File inputFile = new File("\\home\\ec2-user\\.jenkins\\jobs\\Tookitaki\\config.xml");
          DocumentBuilderFactory dbFactory 
             = DocumentBuilderFactory.newInstance();
          DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -125,7 +125,7 @@ public class Utils {
 	public static String getDataFromTestData(String autoTestCaseNameVal, String label) {
 		String requiredCellVal = "";
 		try {
-			FileInputStream fis = new FileInputStream("data\\TestData.xlsx");
+			FileInputStream fis = new FileInputStream("\\home\\ec2-user\\.jenkins\\workspace\\Tookitaki\\data\\TestData.xlsx");
 			XSSFWorkbook wb = new XSSFWorkbook(fis);
 			XSSFSheet ws = wb.getSheet("Sheet1");
 			int rowNum = ws.getLastRowNum() + 1;
@@ -174,7 +174,7 @@ public class Utils {
 	{
 		String requiredCellVal = "";
 		try {
-			FileInputStream fis = new FileInputStream("data\\TestConfiguration.xlsx");
+			FileInputStream fis = new FileInputStream("\\home\\ec2-user\\.jenkins\\workspace\\Tookitaki\\datadata\\TestConfiguration.xlsx");
 			XSSFWorkbook wb = new XSSFWorkbook(fis);
 			XSSFSheet ws = wb.getSheet("Sheet1");
 
