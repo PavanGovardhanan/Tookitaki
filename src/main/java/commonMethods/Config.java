@@ -26,9 +26,9 @@ public class Config {
 			driver = new ChromeDriver();
 			//ATUReports.setWebDriver(driver);
 			driver.manage().window().maximize();*/
-			System.setProperty("webdriver.chrome.driver", "/home/ec2-user/.jenkins/workspace/Tookitaki/driver/chromedriver");
+			System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
 			ChromeDriverService service = new ChromeDriverService.Builder()
-			                .usingDriverExecutable(new File("/home/ec2-user/.jenkins/workspace/Tookitaki/driver/chromedriver"))
+			                .usingDriverExecutable(new File("/usr/local/bin/chromedriver"))
 			                .usingAnyFreePort()
 			                .build();
 			        try {
