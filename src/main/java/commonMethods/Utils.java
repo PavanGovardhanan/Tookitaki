@@ -126,7 +126,7 @@ public class Utils {
 	public static String getDataFromTestData(String autoTestCaseNameVal, String label) {
 		String requiredCellVal = "";
 		try {
-			FileInputStream fis = new FileInputStream("data/Testdata.xlsx");
+			FileInputStream fis = new FileInputStream("data\\Testdata.xlsx");
 			XSSFWorkbook wb = new XSSFWorkbook(fis);
 			XSSFSheet ws = wb.getSheet("Sheet1");
 			int rowNum = ws.getLastRowNum() + 1;
@@ -175,7 +175,7 @@ public class Utils {
 	{
 		String requiredCellVal = "";
 		try {
-			FileInputStream fis = new FileInputStream("data/TestConfiguration.xlsx");
+			FileInputStream fis = new FileInputStream("data\\TestConfiguration.xlsx");
 			XSSFWorkbook wb = new XSSFWorkbook(fis);
 			XSSFSheet ws = wb.getSheet("Sheet1");
 
