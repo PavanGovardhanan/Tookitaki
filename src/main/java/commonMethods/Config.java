@@ -7,7 +7,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import atu.testng.reports.ATUReports;
+
 public class Config {
 	public static WebDriver driver;
 	public static void getDriver() throws MalformedURLException {
@@ -20,22 +20,22 @@ public class Config {
 			System.setProperty("webdriver.chrome.driver", "driver\\chromedriver.exe");
 			System.out.println("Browser launched...");
 			driver = new ChromeDriver();
-			ATUReports.setWebDriver(driver);
+		//	ATUReports.setWebDriver(driver);
 			driver.manage().window().maximize();
-			ATUReports.indexPageDescription = Testcases.project_Name;
+		//	ATUReports.indexPageDescription = Testcases.project_Name;
 		} else if (browserName.equalsIgnoreCase("Firefox")) {
 			System.setProperty("webdriver.gecko.driver", "driver\\geckodriver.exe");
 			driver = new FirefoxDriver();
-			ATUReports.setWebDriver(driver);
+		//	ATUReports.setWebDriver(driver);
 			driver.manage().window().maximize();
-			ATUReports.indexPageDescription = Testcases.project_Name;
+			//ATUReports.indexPageDescription = Testcases.project_Name;
 
 		} else if (browserName.equalsIgnoreCase("IE")) {
 			System.setProperty("webdriver.ie.driver", "driver\\IEDriverServer.exe");
 			driver = new InternetExplorerDriver();
-			ATUReports.setWebDriver(driver);
+		//	ATUReports.setWebDriver(driver);
 			driver.manage().window().maximize();
-			ATUReports.indexPageDescription = Testcases.project_Name;
+			//ATUReports.indexPageDescription = Testcases.project_Name;
 		}
 	}
 
