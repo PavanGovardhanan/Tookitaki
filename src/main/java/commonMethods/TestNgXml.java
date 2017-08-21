@@ -144,7 +144,7 @@ public class TestNgXml {
 	         Element methods = doc.createElement("methods");
 	         test.appendChild(methods);
 	         
-	     	List<String> testCases = extractExcelContentByColumnIndex(4);  	
+	     	/*List<String> testCases = extractExcelContentByColumnIndex(4);  	
 	     	List<String> flag = extractExcelContentByColumnIndex(5);
 	    	
 	         for(int i=1;i<=testCases.size();i++)
@@ -168,7 +168,7 @@ public class TestNgXml {
 	         priority.setValue(integer);
 	         include.setAttributeNode(priority);
 	        	 }
-	         }
+	         }*/
 	         
 	        /* Element listeners = doc.createElement("listeners");
 	         rootElement.appendChild(listeners);
@@ -185,7 +185,7 @@ public class TestNgXml {
 	         TransformerFactory transformerFactory =TransformerFactory.newInstance();
 	         Transformer transformer = transformerFactory.newTransformer();
 	         DOMSource source = new DOMSource(doc);
-	         StreamResult result =new StreamResult("D:\\Tookitaki\\testng.xml");
+	         StreamResult result =new StreamResult(new File("D:\\Tookitaki\\testng.xml"));
 	         transformer.transform(source, result);
 	         // Output to console for testing
 	         StreamResult consoleResult =
