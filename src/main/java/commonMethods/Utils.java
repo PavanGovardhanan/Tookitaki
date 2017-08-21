@@ -1,12 +1,7 @@
 package commonMethods;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.util.Iterator;
-import java.util.Scanner;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -14,119 +9,13 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.Reporter;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 public class Utils {
-	
-	public static String getURLFromJenkins(String data){
-			String element = null;
-	      try {	
-	         File inputFile = new File("/home/ec2-user/.jenkins/jobs/Tookitaki/config.xml");
-	         DocumentBuilderFactory dbFactory 
-	            = DocumentBuilderFactory.newInstance();
-	         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-	         Document doc = dBuilder.parse(inputFile);
-	         doc.getDocumentElement().normalize();	        
-	         NodeList nList = doc.getElementsByTagName("prebuilders");
-	         for (int temp = 0; temp < nList.getLength(); temp++) {
-	            Node nNode = nList.item(temp);
-	            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-	               Element eElement = (Element) nNode;
-	               element = eElement
-	 	                  .getElementsByTagName(data)
-		                  .item(0)
-		                  .getTextContent();
-	            }
-	         }
-	         return element;
-	      } 
-	      catch (Exception e) {
-	         e.printStackTrace();
-	         return null;
-	      }
-	   }
-	
-	public static String getUsernameFromJenkins(String data){
-		String element = null;
-		String userName = null;
-      try {	
-         File inputFile = new File("/home/ec2-user/.jenkins/jobs/Tookitaki/config.xml");
-         DocumentBuilderFactory dbFactory 
-            = DocumentBuilderFactory.newInstance();
-         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-         Document doc = dBuilder.parse(inputFile);
-         doc.getDocumentElement().normalize();
-         NodeList nList = doc.getElementsByTagName("prebuilders");
-         for (int temp = 0; temp < nList.getLength(); temp++) {
-            Node nNode = nList.item(temp);
-            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-               Element eElement = (Element) nNode;
-               element = eElement
- 	                  .getElementsByTagName(data)
-	                  .item(0)
-	                  .getTextContent();
-               String Values[]=element.split(",");
-               userName = (Values[0]);
-            }
-         }
-         return userName;
-      } 
-      catch (Exception e) {
-         e.printStackTrace();
-         return null;
-      }
-   }
-	
-	public static String getPasswordFromJenkins(String data){
-		String element = null;
-		String password = null;
-      try {	
-         File inputFile = new File("/home/ec2-user/.jenkins/jobs/Tookitaki/config.xml");
-         DocumentBuilderFactory dbFactory 
-            = DocumentBuilderFactory.newInstance();
-         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-         Document doc = dBuilder.parse(inputFile);
-         doc.getDocumentElement().normalize();
-         NodeList nList = doc.getElementsByTagName("prebuilders");
-         for (int temp = 0; temp < nList.getLength(); temp++) {
-            Node nNode = nList.item(temp);
-            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-               Element eElement = (Element) nNode;
-               element = eElement
- 	                  .getElementsByTagName(data)
-	                  .item(0)
-	                  .getTextContent();
-               String Values[]=element.split(",");
-               password = (Values[1]);
-            }
-         }
-         return password;
-      } 
-      catch (Exception e) {
-         e.printStackTrace();
-         return null;
-      }
-   }
-	
-	 public static String readUserNameFromConsole(){  
-		   Scanner sc=new Scanner(System.in);  
-		   String userName=sc.next();  
-		   return userName;
-		 } 
-	 public static String readPasswordFromConsole(){  
-		   Scanner sc=new Scanner(System.in);  
-		   String password=sc.next();  
-		   return password;
-		 } 
 	
 	public static String getDataFromTestData(String autoTestCaseNameVal, String label) {
 		String requiredCellVal = "";
 		try {
-			FileInputStream fis = new FileInputStream("/home/ec2-user/.jenkins/workspace/Tookitaki/data/Testdata.xlsx");
+			FileInputStream fis = new FileInputStream("data\\TestData.xlsx");
 			XSSFWorkbook wb = new XSSFWorkbook(fis);
 			XSSFSheet ws = wb.getSheet("Sheet1");
 			int rowNum = ws.getLastRowNum() + 1;
@@ -175,7 +64,7 @@ public class Utils {
 	{
 		String requiredCellVal = "";
 		try {
-			FileInputStream fis = new FileInputStream("/home/ec2-user/.jenkins/workspace/Tookitaki/data/TestConfiguration.xlsx");
+			FileInputStream fis = new FileInputStream("data\\TestConfiguration.xlsx");
 			XSSFWorkbook wb = new XSSFWorkbook(fis);
 			XSSFSheet ws = wb.getSheet("Sheet1");
 

@@ -3,7 +3,6 @@ package commonMethods;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import org.testng.Reporter;
 
 public class ListenerTest implements ITestListener{
 
@@ -23,9 +22,8 @@ public class ListenerTest implements ITestListener{
  }
 
  public void onTestFailure(ITestResult arg0) {
-	
-	 System.out.println(arg0.getName()+" : "+arg0.getThrowable());
-
+  System.out.println(arg0.getName()+" : "+arg0.getThrowable());
+  
  }
 
  public void onTestSkipped(ITestResult arg0) {

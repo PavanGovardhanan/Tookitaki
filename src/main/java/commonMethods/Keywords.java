@@ -9,13 +9,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
-import org.testng.ITestContext;
-import org.testng.ITestListener;
-
-import org.testng.ITestResult;
 
 import commonMethods.Config;
-import commonMethods.Testcases;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Action;
@@ -24,9 +19,10 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Reporter;
-
-import com.relevantcodes.extentreports.model.Log;
+import org.testng.ITestResult;
+import atu.testng.reports.ATUReports;
+import atu.testng.reports.logging.LogAs;
+import atu.testng.selenium.reports.CaptureScreen;
 
 import java.awt.Robot;
 import java.awt.Toolkit;
@@ -40,13 +36,15 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import javax.net.ssl.HttpsURLConnection;
+
 import org.apache.commons.io.FileUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Assert;
+import org.junit.internal.runners.statements.Fail;
 
 public class Keywords implements OR {
-	private static final String True = null;
 	public static String ElementWait = "30";
 	public static int WaitElementSeconds = new Integer(ElementWait);
 	public static String Main_Window = "";
@@ -93,24 +91,24 @@ public class Keywords implements OR {
 		entireResponse += scan.nextLine();
 
 		//System.out.println("Response :"+entireResponse);
-		
+		ATUReports.add("Response :" +entireResponse, true);
 
 		scan.close();
 
 		JSONObject obj = new JSONObject(entireResponse );
 		String responseCode = obj.getString("status");
 		//System.out.println("status : " + responseCode);
-	
+		ATUReports.add("status : " + responseCode, true);
 
 
 		JSONArray arr = obj.getJSONArray("results");
 		for (int i = 0; i < arr.length(); i++) {
 		String placeid = arr.getJSONObject(i).getString("place_id");
 		System.out.println("Place id : " + placeid);
-	
+		ATUReports.add("Place id : " + placeid, true);
 		String formatAddress = arr.getJSONObject(i).getString("formatted_address");
 		System.out.println("Address :" + formatAddress);
-		
+		ATUReports.add("Address : " + formatAddress, true);
 		}
 		}
 		/*//validating Address as per the requirement
@@ -139,13 +137,11 @@ public class Keywords implements OR {
 	public static void clearCookies() {
 		try {
 			Config.driver.manage().deleteAllCookies();
-			Reporter.log("Clear the cookies", true);
-			//ATUReports.add("Clear the cookies", false);
+			ATUReports.add("Clear the cookies", false);
 
 		} catch (Exception e) {
-			Reporter.log("Cookies not cleared", false);
-			//ATUReports.add("Clear the cookies", LogAs.FAILED,
-				//	new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add("Clear the cookies", LogAs.FAILED,
+					new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 	}
@@ -153,12 +149,9 @@ public class Keywords implements OR {
 	public static void get(String url) {
 		try {
 			Config.driver.get(url);
-			Reporter.log("Launch URL:"+url, true);
-			//ATUReports.add("Get", url, false);
+			ATUReports.add("Get", url, false);
 		} catch (Exception e) {
-			Reporter.log("Unable To Launch URL:"+url, false);
-			//ATUReports.add("Get", url, LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
-			e.printStackTrace();
+			ATUReports.add("Get", url, LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 
 		}
@@ -171,22 +164,17 @@ public class Keywords implements OR {
 			Thread.sleep(500);
 			if (webElement.isDisplayed()) {
 				webElement.click();
-				Reporter.log(values[0]+"is Clicked", true);
-				//ATUReports.add("Click - " + values[0], false);
+				ATUReports.add("Click - " + values[0], false);
 			} else {
-				Reporter.log( values[0]+"is not Clicked", true);
-				//ATUReports.add("Click - " + values[0], LogAs.FAILED,
-						//new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+				ATUReports.add("Click - " + values[0], LogAs.FAILED,
+						new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 				Assert.fail();
 
 			}
 		} catch (Exception e) {
-			Reporter.log(values[0]+"is not Clicked", false);
-			//ATUReports.add("Click - " + values[0], LogAs.FAILED,
-					//new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
-			e.printStackTrace();
+			ATUReports.add("Click - " + values[0], LogAs.FAILED,
+					new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
-			
 		}
 	}
 
@@ -197,11 +185,9 @@ public class Keywords implements OR {
 			WebElement element = Config.driver.findElement(By.xpath(values[1]));
 			JavascriptExecutor executor = (JavascriptExecutor) Config.driver;
 			executor.executeScript("arguments[0].click();", element);
-			Reporter.log(values[0]+"is Clicked", true);
-			
+			ATUReports.add("Click - " + values[0], false);
 		} catch (Exception e) {
-			Reporter.log(values[0]+"is not Clicked", false);
-			e.printStackTrace();
+			ATUReports.add(values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 	}
@@ -214,14 +200,13 @@ public class Keywords implements OR {
 			if (webElement.isEnabled()) {
 				Actions action = new Actions(driver);
 				action.click(webElement).build().perform();
-				Reporter.log(values[0]+"is  Clicked", false);
+				ATUReports.add(values[0], false);
 			} else {
-				Reporter.log(values[0]+"is not Clicked", false);
+				ATUReports.add(values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 				Assert.fail();
 			}
 		} catch (StaleElementReferenceException e) {
-			Reporter.log(values[0]+"is not Clicked", false);
-			e.printStackTrace();
+			ATUReports.add(values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 	}
@@ -233,16 +218,13 @@ public class Keywords implements OR {
 			if (webElement.isEnabled()) {
 				Actions action = new Actions(driver);
 				action.sendKeys(webElement, keysToSend).build().perform();
-				Reporter.log(values[0],true);
-				//ATUReports.add(values[0], keysToSend, false);
+				ATUReports.add(values[0], keysToSend, false);
 			} else {
-				Reporter.log(values[0]+"is not entered", false);
-				//ATUReports.add(values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+				ATUReports.add(values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 				Assert.fail();
 			}
 		} catch (StaleElementReferenceException e) {
-			Reporter.log(values[0]+"is not entered", false);
-			//ATUReports.add(values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add(values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 		return keysToSend;
@@ -254,9 +236,9 @@ public class Keywords implements OR {
 			WebElement webElement = Config.driver.findElement(By.xpath(values[1]));
 			Actions action = new Actions(driver).doubleClick(webElement);
 			action.build().perform();
-			//ATUReports.add("Click - " + values[0], false);
+			ATUReports.add("Click - " + values[0], false);
 		} catch (Exception e) {
-			//ATUReports.add(values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add(values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 	}
@@ -266,9 +248,9 @@ public class Keywords implements OR {
 		try {
 			WebElement webElement = Config.driver.findElement(By.xpath(values[1]));
 			webElement.clear();
-			//ATUReports.add(values[0], false);
+			ATUReports.add(values[0], false);
 		} catch (Exception e) {
-			//ATUReports.add(values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add(values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 	}
@@ -280,13 +262,10 @@ public class Keywords implements OR {
 			WebElement webElement = Config.driver.findElement(By.xpath(values[1]));
 			webElement.clear();
 			webElement.sendKeys(keysToSend);
-			Reporter.log("Clear and Type - " + values[0],true);
-			//ATUReports.add("Clear and Type - " + values[0], keysToSend, false);
+			ATUReports.add("Clear and Type - " + values[0], keysToSend, false);
 		} catch (InterruptedException e) {
-			Reporter.log("Clear and Type - " + values[0],false);
-			//ATUReports.add("Clear and Type - " + values[0], keysToSend, LogAs.FAILED,
-				//	new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
-			e.printStackTrace();
+			ATUReports.add("Clear and Type - " + values[0], keysToSend, LogAs.FAILED,
+					new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 		return keysToSend;
@@ -298,10 +277,9 @@ public class Keywords implements OR {
 		try {
 			Actions builder = new Actions(driver);
 			builder.moveToElement(webElement).build().perform();
-			Reporter.log("Mouse over - " +values[0], true);
-			//ATUReports.add("Mouse over - " +values[0], false);
+			ATUReports.add("Mouse over - " +values[0], false);
 		} catch (Exception e) {
-			//ATUReports.add("Mouse over - " +values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add("Mouse over - " +values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 	}
@@ -313,7 +291,7 @@ public class Keywords implements OR {
 			Actions builder = new Actions(driver);
 			builder.moveToElement(webElement).click().build().perform();
 		} catch (Exception e) {
-			//ATUReports.add(values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add(values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 
 		}
@@ -327,8 +305,8 @@ public class Keywords implements OR {
 			selectBox.selectByVisibleText(inputData);
 
 		} catch (Exception e) {
-		//	ATUReports.add(values[0], inputData, LogAs.FAILED,
-			//		new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add(values[0], inputData, LogAs.FAILED,
+					new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 
 		}
@@ -345,8 +323,8 @@ public class Keywords implements OR {
 			sendKeys(xpaths, combinedValues);
 			return combinedValues;
 		} catch (Exception e) {
-			//ATUReports.add(values[0], inputData, LogAs.FAILED,
-		//			new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add(values[0], inputData, LogAs.FAILED,
+					new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 			return null;
 		}
@@ -358,13 +336,11 @@ public class Keywords implements OR {
 		try {
 			WebElement webElement = Config.driver.findElement(By.xpath(values[1]));
 			webElement.sendKeys(keysToSend);
-			Reporter.log(values[0]+"is entered", true);	
+			ATUReports.add("Type - " + values[0], keysToSend, true);
 
 		} catch (Exception e) {
-			Reporter.log( values[0]+"is not entered", true);
-			//ATUReports.add("Type - " + values[0], keysToSend, LogAs.FAILED,
-					//new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
-			e.printStackTrace();
+			ATUReports.add("Type - " + values[0], keysToSend, LogAs.FAILED,
+					new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 		return keysToSend;
@@ -380,7 +356,7 @@ public class Keywords implements OR {
 			int ycord = point.getY();
 			new Actions(driver).moveByOffset(xcord, ycord).click().build().perform();
 		} catch (Exception e) {
-			//ATUReports.add(values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add(values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 	}
@@ -392,7 +368,7 @@ public class Keywords implements OR {
 			Actions builder = new Actions(driver);
 			builder.clickAndHold(webElement).build().perform();
 		} catch (Exception e) {
-		//	ATUReports.add(values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add(values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 	}
@@ -403,19 +379,19 @@ public class Keywords implements OR {
 			WebElement webElement = Config.driver.findElement(By.xpath(values[1]));
 			webElement.submit();
 		} catch (Exception e) {
-			//ATUReports.add(values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add(values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 	}
 
 	public static String getCurrentURL(WebDriver driver) {
 		try {
-		//	ATUReports.add(driver.getCurrentUrl(), false);
+			ATUReports.add(driver.getCurrentUrl(), false);
 			return driver.getCurrentUrl();
 		} catch (Exception e) {
 
-			//ATUReports.add("URL not Retrived", LogAs.FAILED,
-				//	new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add("URL not Retrived", LogAs.FAILED,
+					new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 			return null;
 		}
@@ -454,8 +430,8 @@ public class Keywords implements OR {
 			Select selectBox = new Select(webElement);
 			selectBox.selectByIndex(index);
 		} catch (Exception e) {
-			//ATUReports.add(values[0], inputData, LogAs.FAILED,
-				//	new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add(values[0], inputData, LogAs.FAILED,
+					new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 	}
@@ -471,10 +447,10 @@ public class Keywords implements OR {
 			js.executeScript("arguments[0].setAttribute('style', arguments[1]);", webElement, "");
 			Select selectBox = new Select(webElement);
 			selectBox.selectByValue(inputData);
-		//	ATUReports.add("Select - " + values[0], inputData, false);
+			ATUReports.add("Select - " + values[0], inputData, false);
 		} catch (Exception e) {
-			//ATUReports.add("Select - " + values[0], inputData, LogAs.FAILED,
-				//	new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add("Select - " + values[0], inputData, LogAs.FAILED,
+					new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 	}
@@ -486,10 +462,10 @@ public class Keywords implements OR {
 			Integer index = new Integer(inputData);
 			Select selectBox = new Select(webElement);
 			selectBox.deselectByIndex(index);
-		//	ATUReports.add(values[0], inputData, false);
+			ATUReports.add(values[0], inputData, false);
 		} catch (Exception e) {
-			//ATUReports.add(values[0], inputData, LogAs.FAILED,
-				//	new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add(values[0], inputData, LogAs.FAILED,
+					new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 	}
@@ -500,10 +476,10 @@ public class Keywords implements OR {
 			WebElement webElement = Config.driver.findElement(By.xpath(values[1]));
 			Select selectBox = new Select(webElement);
 			selectBox.deselectByValue(inputData);
-			//ATUReports.add(values[0], inputData, false);
+			ATUReports.add(values[0], inputData, false);
 		} catch (Exception e) {
-		//	ATUReports.add(values[0], inputData, LogAs.FAILED,
-			//		new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add(values[0], inputData, LogAs.FAILED,
+					new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 	}
@@ -562,13 +538,10 @@ public class Keywords implements OR {
 			int time = Integer.parseInt(inputData);
 			int seconds = time * 1000;
 			Thread.sleep(seconds);
-			Reporter.log("Waited for element",true);
-			//ATUReports.add("Waited for element", inputData, false);
+			ATUReports.add("Waited for element", inputData, false);
 		} catch (InterruptedException e) {
-			Reporter.log("Waited for element",false);
-			//ATUReports.add("Wait for element", inputData, LogAs.FAILED,
-				//	new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
-			e.printStackTrace();
+			ATUReports.add("Wait for element", inputData, LogAs.FAILED,
+					new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 	}
@@ -611,14 +584,11 @@ public class Keywords implements OR {
 			WebElement element = Config.driver.findElement(By.xpath(values[1]));
 			highLightElement(xpaths);
 			element.isDisplayed();
-			Reporter.log("Present"+values[0],true);
-			//ATUReports.add("Present", values[0], false);
+			ATUReports.add("Present", values[0], false);
 			return true;
 		} catch (NoSuchElementException e) {
-			Reporter.log("Not Present"+values[0],true);
-		//	ATUReports.add("Not Present", values[0], LogAs.FAILED,
-			//		new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
-			e.printStackTrace();
+			ATUReports.add("Not Present", values[0], LogAs.FAILED,
+					new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 			return false;
 		}
@@ -630,7 +600,7 @@ public class Keywords implements OR {
 			WebElement element = driver.findElement(By.xpath(xpaths));
 			WebDriverWait wait = new WebDriverWait(driver, WaitElementSeconds);
 			wait.until(ExpectedConditions.not(ExpectedConditions.visibilityOf(element)));
-//			ATUReports.add("Present", values[0], false);
+			ATUReports.add("Present", values[0], false);
 
 		} catch (Exception e) {
 			return "Verified Element is not present";
@@ -655,9 +625,8 @@ public class Keywords implements OR {
 		   WebElement webElement = Config.driver.findElement(By.xpath(values[1]));
 		   WebDriverWait wait = new WebDriverWait( Config.driver, WaitElementSeconds);
 		   wait.until(ExpectedConditions.visibilityOf(webElement));
-		//   ATUReports.add("wait visibility Element " + values[0], false);
+		   ATUReports.add("wait visibility Element " + values[0], false);
 		  } catch (Exception e) {
-			  e.printStackTrace();
 			  Assert.fail();
 		  }
 	}
@@ -669,11 +638,11 @@ public class Keywords implements OR {
 			int WaitElementSeconds1 = new Integer(ElementWait1);
 			WebDriverWait wait = new WebDriverWait(Config.driver, WaitElementSeconds1);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(values[1])));
-			//ATUReports.add("Wait - " + values[0], false);
+			ATUReports.add("Wait - " + values[0], false);
 		} catch (Exception e) {
-			//ATUReports.add("Wait - " + values[0], LogAs.FAILED,
-				//	new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
-			e.printStackTrace();
+			ATUReports.add("Wait - " + values[0], LogAs.FAILED,
+					new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			Assert.fail();
 		}
 		  } 
 	
@@ -737,15 +706,12 @@ public class Keywords implements OR {
 			int WaitElementSeconds1 = new Integer(ElementWait1);
 			WebDriverWait wait = new WebDriverWait(Config.driver, WaitElementSeconds1);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(values[1])));
-			//ATUReports.add("Wait - " + values[0], false);
+			ATUReports.add("Wait - " + values[0], false);
 		} catch (Exception e) {
-			//ATUReports.add("Wait - " + values[0], LogAs.FAILED,
-				//	new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
-			e.printStackTrace();
-			System.out.println("Waited for Element and the Element does not appear in the given time period so scripts got failure");
-		
+			ATUReports.add("Wait - " + values[0], LogAs.FAILED,
+					new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			Assert.fail();
 		}
-		
 	}
 
 	public static void waitUntilVisibilityOfElement(WebDriver driver, String element) {
@@ -781,16 +747,16 @@ public class Keywords implements OR {
 	public static void checkTwoString(String GetText1, String GetText2) {
 		try {
 			if (GetText1.equalsIgnoreCase(GetText2)) {
-			//	ATUReports.add("Check", "", GetText1 + " and " + GetText2 + " - MATCHED", false);
+				ATUReports.add("Check", "", GetText1 + " and " + GetText2 + " - MATCHED", false);
 			} else {
-				// ATUReports.add("Check","",GetText1+ "and" +GetText2+
-				 //" NOT MATCHED",LogAs.FAILED, new
-				 //CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+				 ATUReports.add("Check","",GetText1+ "and" +GetText2+
+				 " NOT MATCHED",LogAs.FAILED, new
+				 CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 				 Assert.fail();
 			}
 		} catch (NoSuchElementException e) {
-			//ATUReports.add("Check", "", GetText1 + "and" + GetText2 + " - NOT MATCHED", LogAs.FAILED,
-				//	new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add("Check", "", GetText1 + "and" + GetText2 + " - NOT MATCHED", LogAs.FAILED,
+					new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 	}
@@ -893,11 +859,9 @@ public class Keywords implements OR {
 			waitTime(Config.driver, "5");
 			Config.driver.navigate().refresh();
 			waitTime(Config.driver, "5");
-			Reporter.log("Page refreshed", true);
-		//	ATUReports.add("Page refreshed", false);
+			ATUReports.add("Page refreshed", false);
 		} catch (Exception e) {
-			Reporter.log("Page Not refreshed", false);
-			//ATUReports.add("Page Refresh", LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add("Page Refresh", LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 	}
@@ -905,11 +869,9 @@ public class Keywords implements OR {
 	public static void maximize(WebDriver driver) {
 		try {
 			Config.driver.manage().window().maximize();
-			Reporter.log("Page Maximize", true);
-			//ATUReports.add("Page Maximize", false);
+			ATUReports.add("Page Maximize", false);
 		} catch (Exception e) {
-			Reporter.log("Page Maximize", false);
-			//ATUReports.add("Page Maximize", LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add("Page Maximize", LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 	}
@@ -917,10 +879,10 @@ public class Keywords implements OR {
 	public static void goBack() {
 		try {
 			Config.driver.navigate().back();
-		//	ATUReports.add("Go Back", false);
+			ATUReports.add("Go Back", false);
 
 		} catch (Exception e) {
-			//ATUReports.add("Go Back", LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add("Go Back", LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 	}
@@ -930,15 +892,12 @@ public class Keywords implements OR {
 		{
 		Actions action = new Actions(Config.driver); 
 		 action.sendKeys(Keys.TAB).build().perform();
-		 Reporter.log("Tab pressed", true);
-		//	ATUReports.add("Tab pressed", false);
+			ATUReports.add("Tab pressed", false);
 
 		}
 		catch(Exception e)
 		{
-			 Reporter.log("Tab pressed", false);
-		//	ATUReports.add("Tab pressed", LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
-			e.printStackTrace();
+			ATUReports.add("Tab pressed", LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 	}
@@ -955,11 +914,11 @@ public class Keywords implements OR {
 			robot.keyRelease(KeyEvent.VK_CONTROL);
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.keyRelease(KeyEvent.VK_ENTER);
-			
+			ATUReports.add("",fileLocation, false);
+
 		} catch (Exception exp) {
 			exp.printStackTrace();
-			//ATUReports.add("File upload", LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
-			System.err.println(exp.getMessage());
+			ATUReports.add("File upload", LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 	}
@@ -967,10 +926,10 @@ public class Keywords implements OR {
 	public static void goForward(WebDriver driver) {
 		try {
 			driver.navigate().forward();
-		//	ATUReports.add("Go forward", false);
+			ATUReports.add("Go forward", false);
 
 		} catch (Exception e) {
-			//ATUReports.add("Go Forward", LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add("Go Forward", LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 	}
@@ -991,12 +950,10 @@ public class Keywords implements OR {
 		try {
 			Actions actionObject = new Actions(Config.driver);
 			actionObject.sendKeys(Keys.ENTER).build().perform();
-			Reporter.log("Enter", true);
-			//ATUReports.add("Enter", false);
+			ATUReports.add("Enter", false);
 
 		} catch (Exception e) {
-			Reporter.log("Enter", false);
-			//ATUReports.add("Enter", LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add("Enter", LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 	}
@@ -1012,7 +969,7 @@ public class Keywords implements OR {
 			alert.accept();
 			return alertText;
 		} catch (Exception e) {
-		//	ATUReports.add(values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add(values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 			return null;
 		}
@@ -1058,20 +1015,20 @@ public class Keywords implements OR {
 		try {
 			WebElement element = Config.driver.findElement(By.xpath(values[1]));
 			driver.switchTo().frame(element);
-		//	ATUReports.add(values[0], false);
+			ATUReports.add(values[0], false);
 
 		} catch (NoSuchFrameException e) {
-			//ATUReports.add(values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add(values[0], LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 		}
 	}
 
 	public static void switchToDefaultFrame(WebDriver driver) {
 		try {
 			driver.switchTo().defaultContent();
-			//ATUReports.add("Switch to default frame", false);
+			ATUReports.add("Switch to default frame", false);
 		} catch (Exception e) {
-			//ATUReports.add("Switch to default frame", LogAs.FAILED,
-				//	new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add("Switch to default frame", LogAs.FAILED,
+					new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 		}
 	}
@@ -1079,10 +1036,10 @@ public class Keywords implements OR {
 	public static void switchToFrame(WebDriver driver, WebElement element) {
 		try {
 			driver.switchTo().frame(element);
-			//ATUReports.add("Switch frame", false);
+			ATUReports.add("Switch frame", false);
 			System.out.println("Navigated to frame with element " + element);
 		} catch (NoSuchFrameException e) {
-			//ATUReports.add("Switch frame", LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
+			ATUReports.add("Switch frame", LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			Assert.fail();
 			System.out.println("Doesn't navigated to frame with element " + element);
 		}
@@ -1117,8 +1074,7 @@ public class Keywords implements OR {
 		jse.executeScript("window.scrollTo(0,Math.max(document.documentElement.scrollHeight,"
 				+ "document.body.scrollHeight,document.documentElement.clientHeight));");
 		waitTime(Config.driver, "5");
-		Reporter.log("Scroll bottom", true);
-		//ATUReports.add("Scroll bottom", false);
+		ATUReports.add("Scroll bottom", false);
 	}
 
 	public static void keyboardPageUp() {
@@ -1191,24 +1147,14 @@ public class Keywords implements OR {
 		driver.navigate().to(inputData);
 	}
 
-	public static String captureScreenshot(WebDriver driver, String screenshotName)
-	 {
-	  try 
-	  {
-	   String image_dest= "/screenshots/"+screenshotName.concat(".png");
-	   TakesScreenshot ts=(TakesScreenshot)driver;
-	   File source=ts.getScreenshotAs(OutputType.FILE);
-	   String dest = image_dest;
-	   File destination = new File(dest);
-	   FileUtils.copyFile(source, destination);
-	   return dest;
-	  }
-	  catch (Exception e) 
-	  {
-	   System.out.println("Exception while taking Screenshot"+e.getMessage());
-	   return e.getMessage();
-	  }
-	 }
+	public static void screenShot(WebDriver driver, String inputData) {
+		File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		try {
+			FileUtils.copyFile(screenshot, new File(inputData));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public static void alertGenerate(WebDriver driver, String inputData) {
 		JavascriptExecutor javascript = (JavascriptExecutor) driver;
@@ -1257,8 +1203,7 @@ public class Keywords implements OR {
 		}
 
 	}
-	
-		
+
 	public static void closeTab(WebDriver driver) {
 		driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "w");
 		// tabs.remove(tabs.get(0));
@@ -1315,41 +1260,18 @@ public class Keywords implements OR {
 			WebElement webElement = Config.driver.findElement(By.xpath(values[1]));
 			highLightElement(path);
 			String text = webElement.getText().trim();
-			Reporter.log(text, true);
-			//ATUReports.add(values[0], "", text, true);
+			ATUReports.add(values[0], "", text, true);
 			return text;
 
 		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-	public static String getText1(String path) {
-		String[] values = splitXpath(path);
-		try {
-			WebElement webElement = Config.driver.findElement(By.xpath(values[1]));
-			highLightElement(path);
-			String text = (String)((JavascriptExecutor)Config.driver).executeScript("arguments[2].innerHTML;", webElement);
-			Reporter.log(text, true);
-			//ATUReports.add(values[0], "", text, true);
-			return text;
-
-		} catch (Exception e) {
-			e.printStackTrace();
 			return null;
 		}
 	}
 
 	public static String getAttribute(String xpath, String locatorName) {
-		try {
 		String[] values = splitXpath(xpath);
 		WebElement webElement = Config.driver.findElement(By.xpath(values[1]));
-		Reporter.log(webElement.getAttribute(locatorName)+"attributes",true);
 		return webElement.getAttribute(locatorName);
-		}catch(Exception e) {
-			e.printStackTrace();
-			return null;
-	}
 	}
 
 	public static boolean isDisplayed(String xpath) {

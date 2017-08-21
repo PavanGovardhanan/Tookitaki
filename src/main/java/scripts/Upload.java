@@ -2,6 +2,7 @@ package scripts;
 
 import java.io.IOException;
 
+import atu.testng.reports.ATUReports;
 import commonMethods.Keywords;
 import commonMethods.Testcases;
 import commonMethods.Utils;

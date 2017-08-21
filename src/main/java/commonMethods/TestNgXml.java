@@ -66,7 +66,7 @@ public class TestNgXml {
 	public static ArrayList<String> extractExcelContentByColumnIndex(int columnIndex) {
 		ArrayList<String> columndata = null;
 		try {
-			File f = new File("/home/ec2-user/.jenkins/workspace/Tookitaki/data/TestExecution.xlsx");
+			File f = new File("data\\TestExecution.xlsx");
 			FileInputStream ios = new FileInputStream(f);
 			XSSFWorkbook workbook = new XSSFWorkbook(ios);
 			XSSFSheet sheet = workbook.getSheetAt(0);
@@ -170,7 +170,7 @@ public class TestNgXml {
 	        	 }
 	         }
 	         
-	        /* Element listeners = doc.createElement("listeners");
+	         Element listeners = doc.createElement("listeners");
 	         rootElement.appendChild(listeners);
 	         
 	         String a[]={"atu.testng.reports.listeners.ATUReportsListener","atu.testng.reports.listeners.ConfigurationListener","atu.testng.reports.listeners.MethodListener"};
@@ -179,13 +179,13 @@ public class TestNgXml {
 	        	 Element listener = doc.createElement("listener");
 		         listeners.appendChild(listener);
 		         listener.setAttribute("class-name", a[i]);
-	         }*/
+	         }
 	        
 	         // write the content into xml file
 	         TransformerFactory transformerFactory =TransformerFactory.newInstance();
 	         Transformer transformer = transformerFactory.newTransformer();
 	         DOMSource source = new DOMSource(doc);
-	         StreamResult result =new StreamResult("/home/ec2-user/.jenkins/workspace/Tookitaki/testng.xml");
+	         StreamResult result =new StreamResult(new File("D:\\Tookitaki\\testng.xml"));
 	         transformer.transform(source, result);
 	         // Output to console for testing
 	         StreamResult consoleResult =

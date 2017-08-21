@@ -1,5 +1,4 @@
 package scripts;
-
 import java.io.IOException;
 
 import atu.testng.reports.ATUReports;
@@ -7,114 +6,19 @@ import commonMethods.Config;
 import commonMethods.Keywords;
 import commonMethods.Testcases;
 import commonMethods.Utils;
+public class RBLTransformation extends Keywords {
 
-public class RBLTransform extends Keywords {
-	/**
+	/*
 	 * Name : Pavan
-	 * Created Date: 28/July/2017
-	 * Modified Date:28/July/2017
-	 * Description:
+	 * Created Date: 02/Aug/17
+	 * Modified Date: 02/Aug/17
+	 * Description: RBL Transformation
 	 * 
 	 */
-	public static void rblTransform() throws IOException {
-		String dataFileName = Utils.getDataFromTestData("rblTransformationSlide", "Input File Location");
-		String groupBy = Utils.getDataFromTestData("rblTransformationSlide", "Group By Columns");
-		String orderBy = Utils.getDataFromTestData("rblTransformationSlide", "Order By Columns");
+	public static void rblTransformation() throws IOException {
 		String index1 = Utils.getDataFromTestData("rblTransformationSlide", "Index 1");
 		String index2 = Utils.getDataFromTestData("rblTransformationSlide", "Index 2");
-		String aggregationcolumn = Utils.getDataFromTestData("rblTransformationSlide", "Aggregation Columns");
-		String aggregationColumnName = Utils.getDataFromTestData("rblTransformationSlide", "Aggregation Column Name");
-		waitForElement(dashboard);
-		click(dashboard);
-		waitForElement(transform);
-		click(transform);
-		waitForElement(dataRestructuring);
-		click(dataRestructuring);
-		waitForElement(slide);
-		click(slide);
-		waitForElement(inputFile);
-		sendKeys(inputFile, dataFileName);
-		defaultWait();
-		waitForElement(inputLocation);
-		click(inputLocation);
-		tab();
-		click(slideGroupByColumns);
-		sendKeys(selectGroupByColumns, groupBy);
-		tab();
-		click(slideOrderByColumns);
-		sendKeys(selectOrderByColumns, orderBy);
-		tab();
-		waitForElement(afterGrouping);
-		click(afterGrouping);
-		waitForElement(selectAllRows);
-		click(selectAllRows);
-		waitForElement(windowRangeIndex1);
-		sendKeys(windowRangeIndex1, index1);
-		click(windowRangeIndex1True);
-		waitForElement(windowRangeIndex2);
-		sendKeys(windowRangeIndex2, index2);
-		click(windowRangeIndex2True);
-		waitForElement(aggregationFunction);
-		click(aggregationFunction);
-		waitForElement(aggregationFunctionSum);
-		click(aggregationFunctionSum);
-		click(aggregationcolumns);
-		waitForElement(selectAggregationcolumns);
-		click(selectAggregationcolumns);
-		waitForElement(runFunction);
-		click(runFunction);
-		wait("60");
-		//waitUntilVisibilityOfElement(Config.driver, runningStatus);
-		waitForElement(slideOutputFile);
-		click(slideOutputFile);
-		scrollBottom();
-		click(close);
-	//JOIN
-		click(dashboard);
-		waitForElement(transform);
-		click(transform);
-		waitForElement(dataJoining);
-		click(dataJoining);
-		waitForElement(join);
-		click(join);
-		String leftInputFile = Utils.getDataFromTestData("rblTransformationJoin", "Left Input File");
-		String rightInputFile = Utils.getDataFromTestData("rblTransformationJoin", "Right Input File");
-		String leftMapping = Utils.getDataFromTestData("rblTransformationJoin", "Left Mapping");
-		String rightMapping = Utils.getDataFromTestData("rblTransformationJoin", "Right Mapping");
-		waitForElement(leftFile);
-		sendKeys(leftFile, leftInputFile);
-		defaultWait();
-		tab();
-		waitForElement(rightFile);
-		sendKeys(rightFile, rightInputFile);
-		defaultWait();
-		tab();
-		click(leftColumnMapping);
-		wait("2");
-		waitForElement(leftColumnMappinginput);
-		sendKeys(leftColumnMappinginput, leftMapping);
-		tab();
-		click(rightColumnMapping);
-		waitForElement(rightColumnMappinginput);
-		sendKeys(rightColumnMappinginput, rightMapping);
-		tab();
-		click(typeofJoin);
-		click(fullJoin);
-		click(columnstoLeft);
-		waitForElement(columnstoRight);
-		click(columnstoRight);
-		keyboardArrowDown();
-		tab();
-		waitForElement(runFunction);
-		click(runFunction);
-		loadElement();
-		waitForElement(joinOutputFile);
-		click(joinOutputFile);
-		scrollBottom();
-		click(close);
-		
-
-		/*String projectInputFile = Utils.getDataFromTestData("rblTransformationProject", "Input File");
+		String projectInputFile = Utils.getDataFromTestData("rblTransformationProject", "Input File");
 		String columnname1 = Utils.getDataFromTestData("rblTransformationProject", "Column Name1");
 		String columnname2 = Utils.getDataFromTestData("rblTransformationProject", "Column Name2");
 		String columnname3 = Utils.getDataFromTestData("rblTransformationProject", "Column Name3");
@@ -303,7 +207,8 @@ public class RBLTransform extends Keywords {
 		sendKeys(dateFormatValues4, date);
 		waitForElement(runFunction);
 		click(runFunction);
-		wait("60");
+		pageUp();
+		loadElement();
 		waitForElement(projectOutputFile);
 		click(projectOutputFile);
 		scrollBottom();
@@ -401,15 +306,17 @@ public class RBLTransform extends Keywords {
 		tab();
 		waitForElement(runFunction);
 		click(runFunction);
+		pageUp();
 		loadElement();
-		waitForElement(aggregateOutputFile);
-		click(aggregateOutputFile);
+		waitForElement(aggregateOutputFile0);
+		click(aggregateOutputFile0);
 		defaultWait();
 		scrollBottom();
 		click(close);
 		
 		//SLIDE
 		String inputFileLocation = Utils.getDataFromTestData("rblTransformationSlide1", "Input File");
+		refreshPage();
 		waitForElement(dashboard);
 		click(dashboard);
 		waitForElement(transform);
@@ -424,6 +331,7 @@ public class RBLTransform extends Keywords {
 		waitForElement(inputLocation);
 		click(inputLocation);
 		tab();
+		waitForElement(slideGroupByColumns);
 		click(slideGroupByColumns);
 		waitForElement(selectGroupByColumns1);
 		click(selectGroupByColumns1);
@@ -462,6 +370,7 @@ public class RBLTransform extends Keywords {
 		click(aggregationFunColumns);
 		waitForElement(runFunction);
 		click(runFunction);
+		pageUp();
 		loadElement();
 		waitForElement(slideOutputFile1);
 		click(slideOutputFile1);
@@ -470,6 +379,7 @@ public class RBLTransform extends Keywords {
 		click(close);
 		
 		//AGGREGATE
+		refreshPage();
 		click(dashboard);
 		waitForElement(transform);
 		click(transform);
@@ -484,9 +394,11 @@ public class RBLTransform extends Keywords {
 		sendKeys(inputFile, aggregateInputFileLoc);
 		defaultWait();
 		tab();
+		waitForElement(aggregateGroupByColumns);
 		click(aggregateGroupByColumns);
 		waitForElement(selectgroupColumn);
 		click(selectgroupColumn);
+		waitForElement(aggregateFunction);
 		click(aggregateFunction);
 		waitForElement(aggregateFunctionSum);
 		click(aggregateFunctionSum);
@@ -506,6 +418,7 @@ public class RBLTransform extends Keywords {
 		tab();
 		waitForElement(runFunction);
 		click(runFunction);
+		pageUp();
 		loadElement();
 		waitForElement(aggregateOutputFile);
 		click(aggregateOutputFile);
@@ -535,6 +448,7 @@ public class RBLTransform extends Keywords {
 		click(columnsCarriedOver);
 		waitForElement(runFunction);
 		click(runFunction);
+		pageUp();
 		loadElement();
 		waitForElement(transposeOutputFile);
 		click(transposeOutputFile);
@@ -579,6 +493,7 @@ public class RBLTransform extends Keywords {
 		click(joincancel);
 		waitForElement(runFunction);
 		click(runFunction);
+		pageUp();
 		loadElement();
 		waitForElement(joinOutputFile1);
 		click(joinOutputFile1);
@@ -620,6 +535,7 @@ public class RBLTransform extends Keywords {
 		click(joinright);
 		waitForElement(runFunction);
 		click(runFunction);
+		pageUp();
 		loadElement();
 		waitForElement(joinOutputFile2);
 		click(joinOutputFile2);
@@ -649,18 +565,12 @@ public class RBLTransform extends Keywords {
 		click(splitTypeSequential);
 		waitForElement(runFunction);
 		click(runFunction);
+		pageUp();
 		loadElement();
 		waitForElement(splitOutputFile);
 		click(splitOutputFile);
 		defaultWait();
 		scrollBottom();
-		click(close);*/
-		
-		
-		
-		
-		
-		
+		click(close);
 	}
-
 }
