@@ -1,7 +1,7 @@
 package scripts;
 import java.io.IOException;
 import org.openqa.selenium.By;
-import atu.testng.reports.ATUReports;
+
 import commonMethods.Config;
 import commonMethods.Keywords;
 import commonMethods.Utils;
@@ -26,14 +26,17 @@ public class AMLModel extends Keywords {
 		String unitName = Utils.getDataFromTestData("modelUnit", "Decision Unit Name1");
 		String desName = Utils.getDataFromTestData("modelUnit", "Description1");
 		String threshold = Utils.getDataFromTestData("modelUnit", "Category Threshold");
+		String moduleName=unitName.concat(getCurrentDate());
+		defaultWait();
 		waitForElement(trainingDataLocation);
 		sendKeys(trainingDataLocation, dataLocation);
 		defaultWait();
 		tab();
+		defaultWait();
 		waitForElement(decisionUnitName);
-		sendKeys(decisionUnitName, unitName);
+		sendKeys(decisionUnitName, moduleName);
 		waitForElement(description);
-		sendKeys(description, desName);
+		sendKeys(description, moduleName);
 		click(infoNextStep);
 		waitForElement(dependentVariable);
 		click(dependentVariable);

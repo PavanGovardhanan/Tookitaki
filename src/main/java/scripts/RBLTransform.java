@@ -2,7 +2,7 @@ package scripts;
 
 import java.io.IOException;
 
-import atu.testng.reports.ATUReports;
+
 import commonMethods.Config;
 import commonMethods.Keywords;
 import commonMethods.Testcases;
@@ -17,6 +17,7 @@ public class RBLTransform extends Keywords {
 	 * 
 	 */
 	public static void rblTransform() throws IOException {
+		//SLIDE
 		String dataFileName = Utils.getDataFromTestData("rblTransformationSlide", "Input File Location");
 		String groupBy = Utils.getDataFromTestData("rblTransformationSlide", "Group By Columns");
 		String orderBy = Utils.getDataFromTestData("rblTransformationSlide", "Order By Columns");
@@ -69,7 +70,9 @@ public class RBLTransform extends Keywords {
 		click(slideOutputFile);
 		scrollBottom();
 		click(close);
-	//JOIN
+	
+		//JOIN
+		
 		click(dashboard);
 		waitForElement(transform);
 		click(transform);

@@ -2,7 +2,7 @@ package scripts;
 
 import java.io.IOException;
 
-import atu.testng.reports.ATUReports;
+
 import commonMethods.Config;
 import commonMethods.Keywords;
 import commonMethods.Testcases;
@@ -46,9 +46,10 @@ public class Cluster extends Keywords {
 		String dataLocation = Utils.getDataFromTestData("modelUnit", "Training Data Location");
 		String unitName = Utils.getDataFromTestData("modelUnit", "Decision Unit Name");
 		String desName = Utils.getDataFromTestData("modelUnit", "Description");
+		defaultWait();
 		waitForElement(trainingDataLocation);
 		sendKeys(trainingDataLocation, dataLocation);
-		defaultWait();
+		loadElement();
 		tab();
 		waitForElement(decisionUnitName);
 		sendKeys(decisionUnitName, unitName+1);

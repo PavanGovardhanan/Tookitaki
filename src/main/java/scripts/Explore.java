@@ -1,7 +1,7 @@
 package scripts;
 import java.io.IOException;
 
-import atu.testng.reports.ATUReports;
+
 import commonMethods.Keywords;
 import commonMethods.Testcases;
 import commonMethods.Utils;
@@ -29,9 +29,7 @@ public class Explore extends Keywords {
 		sendKeys(searchfiles, dataFileName);
 		waitForElement(summary);
 		click(summary);
-		waitForElement(rows);
-		getText(rows);
-		getText(columns);
+		defaultWait();
 		click(schema);
 		scrollBottom();
 		click(distributionSummary);

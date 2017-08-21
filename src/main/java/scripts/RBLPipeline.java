@@ -2,7 +2,7 @@ package scripts;
 import java.io.IOException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import atu.testng.reports.ATUReports;
+
 import commonMethods.Config;
 import commonMethods.Keywords;
 import commonMethods.Utils;
@@ -39,7 +39,7 @@ public class RBLPipeline extends Keywords {
 		click(addProcess);
 		waitForElement(addTransformation);
 		click(addTransformation);
-		defaultWait();
+		loadElement();
 		waitForElement(chooseTransformation);
 		click(chooseTransformation);
 		waitForElement(selectTransformation);
@@ -47,7 +47,7 @@ public class RBLPipeline extends Keywords {
 		defaultWait();
 		tab();
 		click(add);
-		defaultWait();
+		loadElement();
 		waitForElement(addProcess);
 		click(addProcess);
 		waitForElement(addTransformation);

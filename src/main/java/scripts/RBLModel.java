@@ -2,7 +2,13 @@ package scripts;
 
 import java.io.IOException;
 
-import atu.testng.reports.ATUReports;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
+import org.testng.Reporter;
+
 import commonMethods.Config;
 import commonMethods.Keywords;
 import commonMethods.Testcases;
@@ -27,14 +33,17 @@ public class RBLModel extends Keywords{
 		String desName = Utils.getDataFromTestData("modelUnit", "Description");
 		String unitName = Utils.getDataFromTestData("modelUnit", "Decision Unit Name");
 		String dataLocationFile = Utils.getDataFromTestData("modelUnit", "Data Location File");
+		String moduleName=unitName.concat(getCurrentDate());
+		defaultWait();
 		waitForElement(trainingDataLocation);
 		sendKeys(trainingDataLocation, dataLocation);
 		defaultWait();
 		tab();
+		defaultWait();
 		waitForElement(decisionUnitName);
-		sendKeys(decisionUnitName, desName);
+		sendKeys(decisionUnitName, moduleName);
 		waitForElement(description);
-		sendKeys(description, desName);
+		sendKeys(description, moduleName);
 		click(infoNextStep);
 		waitForElement(dependentVariable);
 		click(dependentVariable);
@@ -97,29 +106,34 @@ public class RBLModel extends Keywords{
 		waitForElement(viewModel);
 		click(viewModel);
 		try {
-		waitUntilInvisibilityElement(viewRBLModel);
+		waitUntilInvisibilityElement(viewRBLModel1);
+		mouseOver(Config.driver, viewRBLModel1);
+		defaultWait();
+		getAttribute(viewRBLModel1, "uib-tooltip");
+		Assert.fail();
+		}catch(Exception e){
 		click(viewRBLModel);
 		click(featureRelevance);
 		click(decisionRules);
 		waitForElement(decisionTree);
 		click(decisionTree);
 		waitForElement(decisionTreeDownload);
-		click(decisionTreeDownload);
-		}catch(Exception e) {
-		waitUntilInvisibilityElement(failedStatus);
-		getText(failedStatus);
+		click(decisionTreeDownload);	
 		}
 		click(viewPredection);
 		waitForElement(createPredection);
 		click(createPredection);
 		waitForElement(inputFile);
-		sendKeys(inputFile, unitName);
+		sendKeys(inputFile, moduleName);
 		waitForElement(addDataLocation);
 		sendKeys(addDataLocation, dataLocationFile);
 		waitForElement(computemetrics);
 		click(computemetrics);
 		waitForElement(saveScenario);
 		click(saveScenario);
+		
+		
+		
 	}
 
 }
