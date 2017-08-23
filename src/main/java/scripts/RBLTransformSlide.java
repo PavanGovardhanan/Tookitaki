@@ -76,6 +76,7 @@ public class RBLTransformSlide extends Keywords {
 		click(runFunction);
 		pageUp();
 		loadElement();
+		defaultWait();
 		waitForElement(slideOutputFile1);
 		click(slideOutputFile1);
 		defaultWait();
