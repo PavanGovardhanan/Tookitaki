@@ -17,7 +17,7 @@ public class Config {
 		String ie = Utils.getDataFromTestConfig("IEDriverPath");
 
 		if (browserName.equals("Chrome")) {
-			System.setProperty("webdriver.chrome.driver", "/usr/local/share/chromedriver");
+			System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
 			System.out.println("Browser launched...");
 			driver = new ChromeDriver();
 		//	ATUReports.setWebDriver(driver);
