@@ -185,7 +185,7 @@ public class TestNgXml {
 	         TransformerFactory transformerFactory =TransformerFactory.newInstance();
 	         Transformer transformer = transformerFactory.newTransformer();
 	         DOMSource source = new DOMSource(doc);
-	         StreamResult result =new StreamResult(new File("\\home\\ubuntu\\.jenkins\\workspace\\Tookitaki\\testng.xml"));
+	         StreamResult result =new StreamResult(new File("D:\\Tookitaki\\testng.xml"));
 	         transformer.transform(source, result);
 	         // Output to console for testing
 	         StreamResult consoleResult =
