@@ -93,7 +93,7 @@ public class Testcases extends Keywords{
 	public static void login() throws IOException {
 		Login.login();
 	}
-	/*@Test(priority=2)
+	@Test(priority=2)
 	public static void cluster() throws Exception {
 		Cluster.cluster();
 	}
@@ -161,10 +161,6 @@ public class Testcases extends Keywords{
 	public static void amlTransformationProject() throws IOException {
 		AMLTransformationProject.amlTransformationProject();
 	}
-	@Test(priority=19)
-	public static void amlModel() throws IOException {
-		AMLModel.amlModel();
-	}
 	//@Test(priority=20)
 	public static void rblTransform() throws IOException {
 		RBLTransform.rblTransform();
@@ -202,14 +198,18 @@ public class Testcases extends Keywords{
 		RBLTransformSplit.rblTransformSplit();
 	}
 	@Test(priority=29)
+	public static void amlModel() throws IOException {
+		AMLModel.amlModel();
+	}
+	@Test(priority=30)
 	public static void rblModel() throws IOException {
 		RBLModel.rblModel();
 	}
-	@Test(priority=30)
+	@Test(priority=31)
 	public static void amlPipeline() throws IOException {
 		AMLPipeline.amlPipeline();
 	}
-	@Test(priority=31)
+	@Test(priority=32)
 	public static void rblPipeline() throws IOException {
 		RBLPipeline.rblPipeline();
 	}
@@ -224,7 +224,7 @@ public class Testcases extends Keywords{
 	//@Test(priority=34)
 	public static void mailReport() throws IOException {
 		MailReport.mailReport();
-	}*/
+	}
 	
 	@AfterClass
 	public static void teardown() throws Exception {
