@@ -174,7 +174,7 @@ public class Keywords implements OR {
 				Reporter.log(values[0]+"is Clicked", true);
 				//ATUReports.add("Click - " + values[0], false);
 			} else {
-				Reporter.log( values[0]+"is not Clicked", true);
+				Reporter.log(values[0]+" is not Clicked", true);
 				//ATUReports.add("Click - " + values[0], LogAs.FAILED,
 						//new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 				Assert.fail();
@@ -200,7 +200,7 @@ public class Keywords implements OR {
 			Reporter.log(values[0]+"is Clicked", true);
 			
 		} catch (Exception e) {
-			Reporter.log(values[0]+"is not Clicked", false);
+			Reporter.log(values[0]+" is not Clicked", false);
 			e.printStackTrace();
 			Assert.fail();
 		}
@@ -742,8 +742,7 @@ public class Keywords implements OR {
 			//ATUReports.add("Wait - " + values[0], LogAs.FAILED,
 				//	new CaptureScreen(CaptureScreen.ScreenshotOf.BROWSER_PAGE));
 			e.printStackTrace();
-			System.out.println("Waited for Element and the Element does not appear in the given time period so scripts got failure");
-		
+			Reporter.log("Waited for Element and the Element does not appear in the given time period so test got failure", true);
 		}
 		
 	}
