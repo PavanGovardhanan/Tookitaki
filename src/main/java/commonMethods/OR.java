@@ -289,8 +289,9 @@ public interface OR {
 	// Aggregate Functions
 	public static String aggregateFunction = "Aggregate Function >//form/div/div/select";
 	public static String aggregateFunctionSum = "SUM Aggregate >//form/div/div/select//following::option[text()='SUM']";
-	public static String aggregateGroupByColumns = "Group By Columns >//div/div/a";
-	public static String selectgroupColumn = "Select Group By Column >//div[text()='apprefno']";
+	public static String aggregateGroupByColumns = "Group By Columns >//*[@id='s2id_autogen1']/a";
+	public static String selectgroupColumn = "Select Group By Column >//li[6]/div";
+	public static String selectgroupColumn1 = "Select Group By Column >//div[text()='apprefno']";
 	public static String columnsList = "List Of Columns >//div[2]/div/div[2]/form/div/div/a/span";
 	public static String entercolumnsList = "Columns >//div[4]/div/input";
 	public static String addanAggregation = "Add an Aggregation >//a[contains(text(),'Add an aggregation')]";
