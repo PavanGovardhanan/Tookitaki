@@ -24,18 +24,18 @@ public interface OR {
 	public static String assembleNoClusterRunning = "Upload data >//div[text()='Please make sure the cluster is running at ']";
 	public static String settingsPage = "Go To Settings Page >//a[contains(text(),'settings page')]";
 	public static String transformNoClusterRunning = " Start Cluster To Enable Functions >//div[text()='Please add a cluster from ']";
-	public static String modelStartCluster = "Model Start Cluster>//input[@name='phone']";
+	public static String modelStartCluster = "Model Start Cluster >//input[@name='phone']";
 	public static String pipelineStartCluster = "Pipeline Start Cluster >//input[@name='phone']";
-	public static String clusterStatus = "Cluster Status>//td[text()='Spark cluster stopped']";
-	public static String startCluster = "To Start Cluster>//button[@ng-disabled='disabled_start_button']";
-	public static String clusterStartStatus = "Cluster Status>//td[text()='Spark cluster re-starting']";
+	public static String clusterStatus = "Cluster Status >//td[text()='Spark cluster stopped']";
+	public static String startCluster = "To Start Cluster >//button[@ng-disabled='disabled_start_button']";
+	public static String clusterStartStatus = "Cluster Status >//td[text()='Spark cluster re-starting']";
 	
 
 	// Explore
 	public static String genericData = "Generic Data >//div/div/a";
 	public static String textAnalytics = "Text Analytics >//div/div[2]/a";
 	public static String transformationOutput = "Transformation Output >//div[3]/a";
-	public static String trainingData = "Training Data>//div[4]/a";
+	public static String trainingData = "Training Data >//div[4]/a";
 	public static String predectionInputs = "Predection Inputs >//div[5]/a";
 	public static String predectionOutputs = "Predection Outputs >//div[6]/a";
 	public static String searchfiles = "Search For Files >//input[@type='text']";
@@ -43,14 +43,14 @@ public interface OR {
 	public static String schema = "Schema >//label[2]";
 	public static String distributionSummary = "Distribution Summary >//label[3]";
 	public static String coRelation = "Co-Relation >//label[4]";
-	public static String Exit = "Close>//body/div[3]/div/div/div/div/a/i";
-	public static String rows = "Rows>//h1";
-	public static String columns = "Columns>//div[2]/div/div/h1";
+	public static String Exit = "Close >//body/div[3]/div/div/div/div/a/i";
+	public static String rows = "Rows >//h1";
+	public static String columns = "Columns >//div[2]/div/div/h1";
 	
 	
 	// Model
 	public static String addModelUnit = "Add Model Unit >//div[@id='page-wrapper']/div[4]/div/div/div/div[2]";
-	public static String trainingDataLocation = "Training Data Location>//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div[2]/div/form/span/div/div/input";
+	public static String trainingDataLocation = "Training Data Location >//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div[2]/div/form/span/div/div/input";
 	public static String decisionUnitName = "Decision Unit Name >//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div[2]/div/form/span/span/div/div/input";
 	public static String decisionUnitName1 = "Decision Unit Name >//label[text()='Decision Unit Name']//following::input[@ng-model='vm.obj.name']";
 	public static String description = "Description >//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div[2]/div/form/span/span/div[3]/div/input";
@@ -62,67 +62,67 @@ public interface OR {
 	public static String analyzerType = "Analyzer Type >//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div[2]/div/form/span/div/div/select";
 	public static String modelClassification = "Classification-XGBoost >//option[@value='number:5']";
 	public static String optimizationNextStep = "Next Step >//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div[2]/div/form/span[2]/button[2]";
-	public static String runModel = "Run Model>//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div[2]/div/form/span[2]/button[2]";
+	public static String runModel = "Run Model >//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div[2]/div/form/span[2]/button[2]";
 	public static String modelError = "Error Messaage >//div[@id='toast-container']/div/div[3]/div";
 	public static String featureSummary0 = "Feature Summary0 >//tr[59]/td/input";
-	public static String featureSummary2 = "Feature Summary2>//tr[63]/td/input";
+	public static String featureSummary2 = "Feature Summary2 >//tr[63]/td/input";
 	public static String featureSummary6 = "Feature Summary6 >//tr[54]/td/input";
-	public static String featureSummary7 = "Feature Summary7>//tr[55]/td/input";
+	public static String featureSummary7 = "Feature Summary7 >//tr[55]/td/input";
 	public static String featureSummary17 = "Feature Summary17 >//tr[88]/td/input";
 	public static String featureSummary18 = "Feature Summary18 >//tr[89]/td/input";
-	public static String featureSummary28 = "Feature Summary28>//tr[61]/td/input";
+	public static String featureSummary28 = "Feature Summary28 >//tr[61]/td/input";
 	public static String featureSummary33 = "Feature Summary33 >//tr[46]/td/input";
-	public static String featureSummary34 = "Feature Summary34>//tr[96]/td/input";
+	public static String featureSummary34 = "Feature Summary34 >//tr[96]/td/input";
 	public static String featureSummary35 = "Feature Summary35 >//tr[95]/td/input";
-	public static String featureSummary37 = "Feature Summary37>//tr[90]/td/input";
+	public static String featureSummary37 = "Feature Summary37 >//tr[90]/td/input";
 	public static String featureSummary40 = "Feature Summary40 >//tr[57]/td/input";
 	public static String featureSummary41 = "Feature Summary41 >//tr[71]/td/input";
-	public static String featureSummary42 = "Feature Summary42>//tr[58]/td/input";
+	public static String featureSummary42 = "Feature Summary42 >//tr[58]/td/input";
 	public static String featureSummary43 = "Feature Summary43 >//tr[103]/td/input";
-	public static String featureSummary45 = "Feature Summary45>//tr[104]/td/input";
-	public static String featureSummary48 = "Feature Summary48>//tr[87]/td/input";
+	public static String featureSummary45 = "Feature Summary45 >//tr[104]/td/input";
+	public static String featureSummary48 = "Feature Summary48 >//tr[87]/td/input";
 	public static String featureSummary49 = "Feature Summary49 >//tr[86]/td/input";
 	public static String featureSummary50 = "Feature Summary50 >//tr[69]/td/input";
-	public static String featureSummary52 = "Feature Summary52>//tr[64]/td/input";
-	public static String featureSummary00 = "Feature Summary0>//tr[3]/td/input";
+	public static String featureSummary52 = "Feature Summary52 >//tr[64]/td/input";
+	public static String featureSummary00 = "Feature Summary0 >//tr[3]/td/input";
 	public static String featureSummary03 = "Feature Summary3 >//tr[10]/td/input";
 	public static String featureSummary04 = "Feature Summary4 >//tr[2]/td/input";
-	public static String featureSummary09 = "Feature Summary9>//tr[8]/td/input";
+	public static String featureSummary09 = "Feature Summary9 >//tr[8]/td/input";
 	public static String categoryThreshold = "Category Threshold>//div[15]/div/input[@ng-model='vm.advObj.categoryThreshold']";
-	public static String modelStatus = "Status>//tr[@ng-repeat='job in vm.jobs']//following::td[text()='RUNNING']";
-	public static String viewModel = "View Model>//a[@class='btn btn-primary btn-outline btn-sm m-r']";
-	public static String viewAMLModel = "View AML Model>//td/a";
-	public static String viewAMLModel1 = "View AML Model>//td[text()='COMPLETED ']";
-	public static String viewRBLModel = "View RBL Model>//td/a";
-	public static String viewRBLModel1 = "View RBL Model>//td//i[@tooltip-trigger='mouseenter']";
-	public static String viewRBLModel2 = "View RBL Model>//td[text()='Failed']//following::div[contains(text(),'Failed to run the model building pipeline')]";
+	public static String modelStatus = "Status >//tr[@ng-repeat='job in vm.jobs']//following::td[text()='RUNNING']";
+	public static String viewModel = "View Model >//a[@class='btn btn-primary btn-outline btn-sm m-r']";
+	public static String viewAMLModel = "View AML Model >//td/a";
+	public static String viewAMLModel1 = "View AML Model >//td[text()='COMPLETED ']";
+	public static String viewRBLModel = "View RBL Model >//td/a";
+	public static String viewRBLModel1 = "View RBL Model >//td//i[@tooltip-trigger='mouseenter']";
+	public static String viewRBLModel2 = "View RBL Model >//td[text()='Failed']//following::div[contains(text(),'Failed to run the model building pipeline')]";
 	public static String evaluationMetrics = "Evaluation Metrics>//tr[@ng-repeat='job in vm.jobs']//following::td[text()='RUNNING']";
 	public static String featureRelevance = "Feature Relevance>//li[2]/a/tab-heading";
-	public static String decisionRules = "Decision Rules>//div/div/ul/li[3]/a";
-	public static String decisionTree = "Decision Tree>//li[4]/a/tab-heading";
-	public static String decisionTreeDownload = "decisionTreeDownload>//button[2]";
-	public static String failedStatus = "Reason for Failure>//div[@id='page-wrapper']/div[4]/div[2]/div[3]/div/div/div[2]/table/tbody/tr/td[4]";
-	public static String modelRunningStatus = "Reason for Failure>//div[@id='page-wrapper']/div[4]/div[2]/div[3]/div/div/div[2]/table/tbody/tr/td[4][text()='RUNNING']";
+	public static String decisionRules = "Decision Rules >//div/div/ul/li[3]/a";
+	public static String decisionTree = "Decision Tree >//li[4]/a/tab-heading";
+	public static String decisionTreeDownload = "decisionTreeDownload >//button[2]";
+	public static String failedStatus = "Reason for Failure >//div[@id='page-wrapper']/div[4]/div[2]/div[3]/div/div/div[2]/table/tbody/tr/td[4]";
+	public static String modelRunningStatus = "Reason for Failure >//div[@id='page-wrapper']/div[4]/div[2]/div[3]/div/div/div[2]/table/tbody/tr/td[4][text()='RUNNING']";
 	
 	//Scenario
-	public static String viewPredection = "View Predection>//div[@id='page-wrapper']/div[2]/div/div[2]/div";
-	public static String createPredection = "Create Predection>//a[contains(text(),'+ Create Prediction')]";
-	public static String addDataLocation = "Data Location>//div[@id='page-wrapper']/div[2]/div[2]/div/div/div/div[2]/form/div[5]/div/input";
-	public static String computemetrics = "Compute Error Metrics>//input[@type='checkbox']";
-	public static String saveScenario = "Save Scenario>//button[text()='Save']";
+	public static String viewPredection = "View Predection >//div[@id='page-wrapper']/div[2]/div/div[2]/div";
+	public static String createPredection = "Create Predection >//a[contains(text(),'+ Create Prediction')]";
+	public static String addDataLocation = "Data Location >//div[@id='page-wrapper']/div[2]/div[2]/div/div/div/div[2]/form/div[5]/div/input";
+	public static String computemetrics = "Compute Error Metrics >//input[@type='checkbox']";
+	public static String saveScenario = "Save Scenario >//button[text()='Save']";
 	
 	
 	
 	// Pipeline
-	public static String viewPipeline = "View Pipeline>//a[contains(text(),'View Pipeline')]";
-	public static String runAutomation = "Run Automation>//div[@id='pipeline']/div/div/div/div/div[3]/div/button";
+	public static String viewPipeline = "View Pipeline >//a[contains(text(),'View Pipeline')]";
+	public static String runAutomation = "Run Automation >//div[@id='pipeline']/div/div/div/div/div[3]/div/button";
 	public static String processRunAutomation = "Select Process Run Automation >//button[@type='button']";
 	public static String pipelineError = "Error Message >//div[@id='toast-container']/div/div[3]/div";
 	
 	
 	//Transform
-	public static String dataRestructuring = "Data Restructuring>//div[contains(text(),'Data Restructuring')]";
-	public static String dataJoining = "Data Joining>//div[contains(text(),'Data Joining')]";
+	public static String dataRestructuring = "Data Restructuring >//div[contains(text(),'Data Restructuring')]";
+	public static String dataJoining = "Data Joining >//div[contains(text(),'Data Joining')]";
 	public static String dataCleansing = "Data Cleansing >//div[contains(text(),'Data Cleansing')]";
 	public static String userDefinedFunction = "User Defined Function >//div[contains(text(),'User Defined Function')]";
 	public static String slide = "Slide Function >//button//b[contains(text(),'SLIDE')]";
@@ -150,7 +150,7 @@ public interface OR {
 	public static String selectAllRows = "Select all rows >//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div/div[2]/form/div[5]/div/div/select/option[2]";
 	public static String windowRangeIndex1 = "Window Index >//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div/div[2]/form/div[6]/form/div[2]/div/div/div/span/input";
 	public static String windowRangeIndex1True = "Absolute True >//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div/div[2]/form/div[6]/form/div[2]/div/div/div/span/input[2]";
-	public static String windowRangeIndex2 = "Window Range Index2>//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div/div[2]/form/div[6]/form/div[2]/div/div/div[2]/span/input";
+	public static String windowRangeIndex2 = "Window Range Index2 >//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div/div[2]/form/div[6]/form/div[2]/div/div/div[2]/span/input";
 	public static String windowRangeIndex2True = "Absolute True >//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div/div[2]/form/div[6]/form/div[2]/div/div/div[2]/span/input[2]";
 	public static String aggregationFunction = "Aggregation Function >	//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div/div[2]/form/div[6]/form/div[2]/div/div/div[3]/form/div/div/select";
 	public static String aggregationFunctionSum = "Aggregation Function Sum >//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div/div[2]/form/div[6]/form/div[2]/div/div/div[3]/form/div/div/select/option[6]";
@@ -161,11 +161,11 @@ public interface OR {
 	public static String addOne = "Add Aggregation >//div[2]/div/a";
 	public static String windowRangeIndex3 = "Window Index >//div[2]/div/span/input";
 	public static String windowRangeIndex3True = "Absolute True >//div[2]/div/span/input[2]";
-	public static String windowRangeIndex4 = "Window Range Index>//div[2]/div[2]/span/input";
+	public static String windowRangeIndex4 = "Window Range Index >//div[2]/div[2]/span/input";
 	public static String windowRangeIndex4True = "Absolute True >//div[2]/div[2]/span/input[2]";
 	public static String aggregationFunction1 = "Aggregation Function >	//div[2]/div[3]/form/div/div/select";
 	public static String aggregationFunctionSum1 = "Aggregation Function Sum >//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div/div[2]/form/div[6]/form/div[2]/div/div[2]/div[3]/form/div/div/select/option[6]";
-	public static String aggregationFunctionColumns = "Aggregation Function Columns>//div[2]/div[3]/form/div/div[2]/div/div[2]/form/div/div/a";
+	public static String aggregationFunctionColumns = "Aggregation Function Columns >//div[2]/div[3]/form/div/div[2]/div/div[2]/form/div/div/a";
 	public static String aggregationFunColumns = "Aggregation Columns >//li[9]/div";
 	public static String runFunction = "Run Function >//button[contains(text(),'Run Function')]";
 	public static String aggregationinput = "aggregationinput >//a[@class='empty-ce ng-valid ng-dirty ng-valid-parse ng-touched']";
@@ -189,14 +189,14 @@ public interface OR {
 	public static String columnstoRight = " Columns To Right >//div//h3[text()='Columns to be carried over from file on Right side of JOIN']//following::span//following::span";
 	public static String joinOutputFile = " Output File >//tr//td//p//a[contains(text(),'JOIN_SLIDE_Account_segment_')]";
 	public static String joinleft = " Columns To left >//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div/div[2]/form/div[6]/span/div/div[3]/a";
-	public static String joinright = " Columns To Right>//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div/div[2]/form/div[7]/span/div/div[3]/a";
-	public static String joincancel = "  Column>//div[7]/span/div/div/div/div/div/i[2]";
+	public static String joinright = " Columns To Right >//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div/div[2]/form/div[7]/span/div/div[3]/a";
+	public static String joincancel = "  Column >//div[7]/span/div/div/div/div/div/i[2]";
 	public static String joinOutputFile1 = " Output File >//tr//td//p//a[contains(text(),'JOIN_AGGREGATE_PROJECT_JOIN_SLIDE_Account_segment_')]";
 	public static String joinOutputFile2 = " Output File >//tr//td//p//a[contains(text(),'JOIN_TRANSPOSE_demogh_data_')]";
-	public static String joinright1 = " Columns To Right>//div[7]/span/div/div[2]/form/div/div/a";
-	public static String enterRightEncode = "  Column to Right>//div[@id='select2-drop']/div/input";
+	public static String joinright1 = " Columns To Right >//div[7]/span/div/div[2]/form/div/div/a";
+	public static String enterRightEncode = "  Column to Right >//div[@id='select2-drop']/div/input";
 	public static String joinOutputFile3 = " Output File >//tr//td//p//a[contains(text(),'JOIN_Data2_')]";
-	public static String splitType = " Split Type>//div[4]/select";
+	public static String splitType = " Split Type >//div[4]/select";
 	public static String splitTypeSequential = " Split Type Sequential >//div[4]/select/option[text()='SEQUENTIAL']";
 	public static String splitOutputFile = " Output File >//a[contains(text(),'SPLIT_SPLIT_intermediate_2_')]";
 	
@@ -252,9 +252,9 @@ public interface OR {
 	public static String functionType3 = "Function >//li[4]/form/div/div/select//option[text()='Function']";
 	public static String columnName3 = "Column Name >//li[4]/form/div[2]/div/input";
 	public static String columnType3 = "Column Type >//li[4]/form/div[2]/div[2]/ul/li/form/div/select";
-	public static String columnTypeFunction3 = "Function>//li[4]/form/div[2]/div[2]/ul/li/form/div/select//following::option[@value='function']";
+	public static String columnTypeFunction3 = "Function >//li[4]/form/div[2]/div[2]/ul/li/form/div/select//following::option[@value='function']";
 	public static String functionValue3 = "Value >//li[4]/form/div[2]/div[2]/ul/li/form/div[2]/div/div/select";
-	public static String datediffFunction3 = "datediff Function>//li[4]/form/div[2]/div[2]/ul/li/form/div[2]/div/div/select/optgroup[2]/option[23]";
+	public static String datediffFunction3 = "datediff Function >//li[4]/form/div[2]/div[2]/ul/li/form/div[2]/div/div/select/optgroup[2]/option[23]";
 	public static String summaryType4 = "Type >//li[4]/form/div[2]/div[2]/ul/li/form/div[2]/div/ul/li/form/div/select";
 	public static String summaryvalue4 = "Value >//li[4]/form/div[2]/div[2]/ul/li/form/div[2]/div/ul/li/form/div[2]/div/div/div/div/span";
 	public static String enterSummaryvalue4 = "Value >//li[4]/form/div[2]/div[2]/ul/li/form/div[2]/div/ul/li/form/div[2]/div/div/div/div/span//following::div[text()='last_paymt_dt']";
@@ -281,7 +281,7 @@ public interface OR {
 	public static String dateFormatColumns4 = "Select Column >//div[5]/div/div/a";
 	public static String formatColumns4 = "paymt_str_dt >//div[7]/div/input";
 	public static String dateFormatValues4 = "Date Format >//div[5]/div/div/a//following::div[2]/input";
-	public static String addNewColumn = "Add New Column>//a[text()='Add a new column']";
+	public static String addNewColumn = "Add New Column >//a[text()='Add a new column']";
 	public static String projectOutputFile = "Output File >//tr//td//p//a[contains(text(),'PROJECT_JOIN_SLIDE_Account_segment_')]";
 	public static String projectOutputFile1 = "Output File >//a[contains(text(),'PROJECT_N_UNION_N_UNION_BALANCE_intermediate_')]";
 		
@@ -290,10 +290,10 @@ public interface OR {
 	public static String aggregateFunction = "Aggregate Function >//form/div/div/select";
 	public static String aggregateFunctionSum = "SUM Aggregate >//form/div/div/select//following::option[text()='SUM']";
 	public static String aggregateGroupByColumns = "Group By Columns >//div/div/a";
-	public static String selectgroupColumn = "Select Group By Column>//div[text()='apprefno']";
+	public static String selectgroupColumn = "Select Group By Column >//div[text()='apprefno']";
 	public static String columnsList = "List Of Columns >//div[2]/div/div[2]/form/div/div/a/span";
 	public static String entercolumnsList = "Columns >//div[4]/div/input";
-	public static String addanAggregation = "Add an Aggregation>//a[contains(text(),'Add an aggregation')]";
+	public static String addanAggregation = "Add an Aggregation >//a[contains(text(),'Add an aggregation')]";
 	public static String aggregateFunctionAvg = "AVG Aggregate >//div[2]/div/select/option[4]";
 	public static String aggregateFunAvg = "Aggregate Function >//form/div[2]/div/select";
 	public static String columnsList1 = "List Of Columns >//div[2]/div[2]/div/div[2]/form/div/div/a";
@@ -305,7 +305,7 @@ public interface OR {
 	// Transpose Function
 	public static String columnsTransposed = "Columns to be Transposed >//div[@id='select2-drop']/div/input";
 	public static String selectTransposeColumn = "Select Transpose Column >//div[2]/form/div/div/a";
-	public static String columnsCarriedOver = "Columns To Be Carried Over>//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div/div[2]/form/div[8]/span/span/div/div[3]/a";
+	public static String columnsCarriedOver = "Columns To Be Carried Over >//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div/div[2]/form/div[8]/span/span/div/div[3]/a";
 	public static String transposeOutputFile = "Output File >//tr//td//p//a[contains(text(),'TRANSPOSE_demogh_data_')]";
 	public static String close = "Close button >//i[@class='fa fa-times-circle-o']";
 
@@ -328,9 +328,9 @@ public interface OR {
 	public static String overSampling = "Over_Sampling >//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div/div[2]/form/div[7]/select/option[@label='OVER_SAMPLING']";
 	public static String balanceFractionOutputFile = "Output File>//tr//td//p//a[contains(text(),'BALANCE_WITH_FRACTION_FILTER_JOIN_Data2_')]";
 	public static String addFile = "Add a File >//a[contains(text(),'Add a file')]";
-	public static String inputFile1 = "Second Input File>//div[2]/input";
-	public static String inputFile2 = "Third Input File>//div[3]/input";
-	public static String inputFile3 = "Third Input File>//div[4]/input";
+	public static String inputFile1 = "Second Input File >//div[2]/input";
+	public static String inputFile2 = "Third Input File >//div[3]/input";
+	public static String inputFile3 = "Third Input File >//div[4]/input";
 	public static String nUnionOutputFile = "Output File >//a[contains(text(),'N_UNION_BALANCE_intermediate_')]";
 	
 
