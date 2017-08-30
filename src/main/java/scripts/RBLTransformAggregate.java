@@ -42,9 +42,11 @@ public class RBLTransformAggregate extends Keywords {
 				sendKeys(inputFile, aggregateInputFile);
 				defaultWait();
 				tab();
-				click(aggregateGroupByColumns);
 				defaultWait();
-				jsClickByXPath(selectgroupColumn);
+				waitForElement(aggregateGroupByColumns);
+				click(aggregateGroupByColumns);
+				waitForElement(selectgroupColumn);
+				click(selectgroupColumn);
 				click(aggregateFunction);
 				waitForElement(aggregateFunctionSum);
 				click(aggregateFunctionSum);

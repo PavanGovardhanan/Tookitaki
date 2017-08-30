@@ -32,10 +32,11 @@ public class RBLTransformAggregate2 extends Keywords {
 				sendKeys(inputFile, aggregateInputFileLoc);
 				defaultWait();
 				tab();
+				defaultWait();
 				waitForElement(aggregateGroupByColumns);
 				click(aggregateGroupByColumns);
-				waitForElement(selectgroupColumn);
-				click(selectgroupColumn);
+				waitForElement(selectgroupColumn1);
+				click(selectgroupColumn1);
 				waitForElement(aggregateFunction);
 				click(aggregateFunction);
 				waitForElement(aggregateFunctionSum);
