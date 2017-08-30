@@ -37,8 +37,8 @@ public class RBLTransformSlide extends Keywords {
 		tab();
 		waitForElement(slideGroupByColumns);
 		click(slideGroupByColumns);
-		waitForElement(selectGroupByColumns1);
-		click(selectGroupByColumns1);
+		defaultWait();
+		jsClickByXPath(selectGroupByColumns1);
 		click(slideOrderByColumns);
 		waitForElement(selectOrderByColumns1);
 		click(selectOrderByColumns1);

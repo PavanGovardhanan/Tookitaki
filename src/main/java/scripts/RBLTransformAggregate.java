@@ -43,8 +43,8 @@ public class RBLTransformAggregate extends Keywords {
 				defaultWait();
 				tab();
 				click(aggregateGroupByColumns);
-				waitForElement(selectgroupColumn);
-				click(selectgroupColumn);
+				defaultWait();
+				jsClickByXPath(selectgroupColumn);
 				click(aggregateFunction);
 				waitForElement(aggregateFunctionSum);
 				click(aggregateFunctionSum);
