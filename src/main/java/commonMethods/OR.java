@@ -304,7 +304,7 @@ public interface OR {
 	
 
 	// Transpose Function
-	public static String columnsTransposed = "Columns to be Transposed >//div[3]/div/input";
+	public static String columnsTransposed = "Columns to be Transposed >//div[@id='select2-drop']/div/input";
 	public static String selectTransposeColumn = "Select Transpose Column >//div[2]/form/div/div/a";
 	public static String columnsCarriedOver = "Columns To Be Carried Over >//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div/div[2]/form/div[8]/span/span/div/div[3]/a";
 	public static String transposeOutputFile = "Output File >//tr//td//p//a[contains(text(),'TRANSPOSE_demogh_data_')]";
