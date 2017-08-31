@@ -56,8 +56,8 @@ public interface OR {
 	public static String description = "Description >//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div[2]/div/form/span/span/div[3]/div/input";
 	public static String infoNextStep = "Next Step >//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div[2]/div/form/span[2]/button";
 	public static String dependentVariable = "Dependent Variable >//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div[2]/div/form/span/div/div/select";
-	public static String selectDependentVariable = "Select Dependent Variable >//*[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div[2]/div/form/span[1]/div[1]/div/select/option[54]";
-	public static String selectDependentVariable1 = "Select Dependent Variable >//*[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div[2]/div/form/span[1]/div[1]/div/select/option[11]";
+	public static String selectDependentVariable = "Select Dependent Variable >//option[contains(text(),'rbl_relationship_no')]";
+	public static String selectDependentVariable1 = "Select Dependent Variable >//option[contains(text(),'ACTION')]";
 	public static String modelNextStep = "Next Step >//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div[2]/div/form/span[2]/button[2]";
 	public static String analyzerType = "Analyzer Type >//div[@id='page-wrapper']/div[4]/div[2]/div[2]/div/div[2]/div/form/span/div/div/select";
 	public static String modelClassification = "Classification-XGBoost >//option[@value='number:5']";
