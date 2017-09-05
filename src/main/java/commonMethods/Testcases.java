@@ -1,6 +1,7 @@
 package commonMethods;
 
 
+import java.awt.AWTException;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -53,6 +54,7 @@ import scripts.RBLTransformSlide;
 import scripts.RBLTransformSplit;
 import scripts.RBLTransformTranspose;
 import scripts.RBLTransformationProject;
+import scripts.StopCluster;
 import scripts.Upload;
 import scripts.ZipUtils;
 
@@ -224,6 +226,10 @@ public class Testcases extends Keywords{
 	//@Test(priority=34)
 	public static void mailReport() throws IOException {
 		MailReport.mailReport();
+	}
+	@Test(priority=35)
+	public static void stopCluster() throws IOException, AWTException {
+		StopCluster.stopCluster();
 	}
 	
 	@AfterClass

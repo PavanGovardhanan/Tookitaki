@@ -18,6 +18,8 @@ public interface OR {
 	public static String transform = "Transform >//div[@id='page-wrapper']/div/div/nav/ul/li[3]/div/h2";
 	public static String model = "Model >//div[@id='page-wrapper']/div/div/nav/ul/li[4]/div/h2";
 	public static String pipeline = "Pipeline >//div[@id='page-wrapper']/div[2]/div/nav/ul/li[5]/div/p";
+	public static String stop = "Stop Cluster >//button[contains(text(),' Stop')]";
+	public static String logout = "Logout >//*[@id='side-menu']/li[6]/a";
 	
 	
 	// Cluster
@@ -351,10 +353,10 @@ public interface OR {
 	
 
 	// Upload
-	public static String uploadCSVFile = "Upload Terminal ID CSV File >//div//input[@type='file']";
-	public static String upload = "Upload button >//input[@value='Upload']";
-	public static String example = "Example Terminal ID >//a[contains(text(),'Example Terminal ID')]";
-	public static String Path = "Path >//a[contains(text(),'Example Terminal ID')]//following::tr//th[1]";
+	public static String uploadCSVFile = "Upload Terminal ID CSV File >//*[@id='page-wrapper']/div[4]/div/div[2]/div/div/div/div[1]/div/form/div[3]/div/div/input";
+	public static String calculateSummary = "Calculate Summary >//*[@id='page-wrapper']/div[4]/div/div[2]/div/div/div/div[1]/div/form/div[11]/div/select";
+	public static String calcutaleSummaryYes = "Calculate Summary-Yes >//*[@id='page-wrapper']/div[4]/div/div[2]/div/div/div/div[1]/div/form/div[11]/div/select/option[1]";
+	public static String analyzeSave = "Path >//*[@id='page-wrapper']/div[4]/div/div[2]/div/div/div/div[1]/div/form/div[13]/div[1]/button";
 	public static String uploadDate = "Upload Date >//a[contains(text(),'Example Terminal ID')]//following::tr//th[2]";
 	public static String downloadFile = "Download File >//a[contains(text(),'Example Terminal ID')]//following::tr//th[3]";
 	public static String Path1 = "Path 1 >//a[contains(text(),'Example Terminal ID')]//following::tbody/tr/td[1]";
