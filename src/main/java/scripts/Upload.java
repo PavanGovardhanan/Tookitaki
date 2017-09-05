@@ -21,7 +21,15 @@ public class Upload extends Keywords {
 		click(assemble);
 		waitForElement(uploadCSVFile);
 		click(uploadCSVFile);
+		defaultWait();
 		uploadFileRobot(fileLocation);
+		defaultWait();
+		waitForElement(calculateSummary);
+		click(calculateSummary);
+		waitForElement(calcutaleSummaryYes);
+		click(calcutaleSummaryYes);
+		waitForElement(analyzeSave);
+		click(analyzeSave);
 		
 	}
 
